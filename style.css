@@ -1,0 +1,45 @@
+html{
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+}
+#wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#board{
+    display: flex;
+    flex-wrap: wrap;
+    outline: 5px black solid;
+    width: 80vh;
+    height: 80vh;
+}
+.square{
+    /* border: 1px darkslategrey solid; */
+    width: 10vh;
+    height: 10vh;
+    text-align:center;
+    line-height: 10vh;
+    font-size: 7.5vh;
+
+}
+.light{
+    background: rgb(215, 235, 243);
+}
+.dark{
+    background:rgb(43, 43, 43);
+}
+.black{
+    color:black;
+}
+.white{
+    color:silver;
+}
+.possibleMove{
+
+    background:rgba(222, 247, 2, 0.6);
+}
