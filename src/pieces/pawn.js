@@ -1,5 +1,6 @@
 import Piece from './piece';
-import { WSA_E_CANCELLED } from 'constants';
+
+import board from '../board';
 
 class Pawn extends Piece {
   constructor(x, y, side) {
@@ -13,14 +14,18 @@ class Pawn extends Piece {
 
     const possibleMoves = [];
 
-    if (this.side == 'white' && `${(this.x = 6)}, ${this.y}`) {
-      this.x - 1 > 0 && possibleMoves.push(`${this.x - 1},${this.y}`);
-      this.x - 2 > 0 && possibleMoves.push(`${this.x - 2},${this.y}`);
-    } else if (this.side == 'white' && `${(this.x = !6)}, ${this.y}`) {
-      this.x - 1 > 0 && possibleMoves.push(`${this.x - 1},${this.y}`);
-    } else if (this.side == 'black' && `${(this.x = 1)}, ${this.y}`) {
-      this.x + 1 > 0 && possibleMoves.push(`${this.x + 1},${this.y}`);
-      this.x + 2 > 0 && possibleMoves.push(`${this.x + 2},${this.y}`);
+    if (this.side === 'white') {
+      this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y}`);
+      if (this.x === 6) {
+        this.x - 2 >= 0 && possibleMoves.push(`${this.x - 2},${this.y}`);
+        console.log(!!board[0][0]);
+      }
+    }
+    if (this.side === 'black') {
+      this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y}`);
+      if (this.x === 1) {
+        this.x + 2 <= 7 && possibleMoves.push(`${this.x + 2},${this.y}`);
+      }
     }
 
     return possibleMoves;
