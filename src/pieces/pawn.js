@@ -8,24 +8,17 @@ class Pawn extends Piece {
     this.display = `<i class="fas fa-chess-pawn ${side}"></i>`;
   }
 
-  // clickHandler() {
-  // this.x.pawnWasClicked = true;
-  // }
-
-  // pawn.addEventListener('click', clickHandler);
-
   findLegalMoves() {
-    // console.log(this.x, this.y);
-    let pawnWasClicked = false;
+    console.log(this.x, this.y);
 
     const possibleMoves = [];
 
-    if (this.side == 'white' && pawnWasClicked) {
+    if (this.side == 'white') {
       this.x - 1 > 0 && possibleMoves.push(`${this.x - 1},${this.y}`);
       this.x - 2 > 0 && possibleMoves.push(`${this.x - 2},${this.y}`);
-    } else {
-      this.x + 1 > 0 && possibleMoves.push(`${this.x + 1},${this.y}`);
-      this.x + 2 > 0 && possibleMoves.push(`${this.x + 2},${this.y}`);
+    } else if (this.side == 'black') {
+      this.y + 1 > 0 && possibleMoves.push(`${this.x + 1},${this.y}`);
+      this.y + 2 > 0 && possibleMoves.push(`${this.x + 2},${this.y}`);
     }
     return possibleMoves;
   }
