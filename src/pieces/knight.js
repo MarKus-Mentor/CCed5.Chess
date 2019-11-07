@@ -9,15 +9,15 @@ class Knight extends Piece {
   findLegalMoves() {
     const possibleMoves = [];
     //Pierwsza możliwość Dwie kratki po Y, jedna po X
-      this.x - 2 >= 0 && this.y - 1 && possibleMoves.push(`${this.x - 2},${this.y-1}`);
-      this.x - 2 >= 0 && this.y + 1 && possibleMoves.push(`${this.x - 2},${this.y+1}`);
-      this.x + 2 >= 0 && this.y - 1 && possibleMoves.push(`${this.x + 2},${this.y-1}`);
-      this.x + 2 >= 0 && this.y + 1 && possibleMoves.push(`${this.x + 2},${this.y+1}`);
+      this.x - 2 >= 0 && this.y - 1 >= 0 && possibleMoves.push(`${this.x - 2},${this.y-1}`);
+      this.x - 2 >= 0 && this.y + 1 < 8 && possibleMoves.push(`${this.x - 2},${this.y+1}`);
+      this.x + 2 < 8 && this.y - 1 >= 0 && possibleMoves.push(`${this.x + 2},${this.y-1}`);
+      this.x + 2 < 8 && this.y + 1 < 8 && possibleMoves.push(`${this.x + 2},${this.y+1}`);
     //Druga możliwość Dwie kratki po X, jedna po Y      
-      this.x - 1 >= 0 && this.y - 2 && possibleMoves.push(`${this.x - 1},${this.y-2}`);
-      this.x - 1 >= 0 && this.y + 2 && possibleMoves.push(`${this.x - 1},${this.y+2}`);
-      this.x + 1 >= 0 && this.y - 2 && possibleMoves.push(`${this.x + 1},${this.y-2}`);
-      this.x + 1 >= 0 && this.y + 2 && possibleMoves.push(`${this.x + 1},${this.y+2}`);
+      this.x - 1 >= 0 && this.y - 2 >= 0 && possibleMoves.push(`${this.x - 1},${this.y-2}`);
+      this.x - 1 >= 0 && this.y + 2 < 8 && possibleMoves.push(`${this.x - 1},${this.y+2}`);
+      this.x + 1 < 8 && this.y - 2 >= 0 && possibleMoves.push(`${this.x + 1},${this.y-2}`);
+      this.x + 1 < 8 && this.y + 2 < 8 && possibleMoves.push(`${this.x + 1},${this.y+2}`);
 
     return possibleMoves;
   }
