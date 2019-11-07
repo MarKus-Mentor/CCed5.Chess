@@ -14,20 +14,23 @@ class Pawn extends Piece {
 
     const possibleMoves = [];
 
-    if (this.side === 'white') {
+    if (this.side === 'white' && !board[this.x - 1][this.y]) {
       this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y}`);
       if (this.x === 6) {
         this.x - 2 >= 0 && possibleMoves.push(`${this.x - 2},${this.y}`);
-        console.log(!!board[0][0]);
+        console.log(!!board[2][0]);
+        console.log(!!board[1][0]);
       }
     }
-    if (this.side === 'black') {
+    if (this.side === 'black' && !board[this.x + 1][this.y]) {
       this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y}`);
       if (this.x === 1) {
         this.x + 2 <= 7 && possibleMoves.push(`${this.x + 2},${this.y}`);
       }
     }
-
+    if (board[this.x - 1][this.y]) {
+      console.log('dziala');
+    }
     return possibleMoves;
   }
 
