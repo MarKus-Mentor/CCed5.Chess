@@ -8,6 +8,21 @@ class Rook extends Piece {
   }
   findLegalMoves() {
     const possibleMoves = [];
+    
+    for (let i=1;i<8;i++) {
+      if (this.x+i<8) {
+        possibleMoves.push(`${this.x+i},${this.y}`);
+        }
+      if (this.x-i>=0) {
+        possibleMoves.push(`${this.x-i},${this.y}`);
+          }  
+      if (this.y+i<8) {
+        possibleMoves.push(`${this.x},${this.y+i}`);
+        }
+      if (this.y-i>=0) {
+        possibleMoves.push(`${this.x},${this.y-i}`);
+          }
+    }
 
     return possibleMoves;
   }
