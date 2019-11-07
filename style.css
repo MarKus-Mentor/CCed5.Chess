@@ -1,13 +1,16 @@
 html {
   margin: 0;
 }
+
 * {
   box-sizing: border-box;
 }
+
 body {
   background: url(img/chess.jpg) no-repeat center center fixed;
   background-size: cover;
 }
+
 #wrapper {
   display: flex;
   justify-content: center;
@@ -22,6 +25,7 @@ body {
   width: 80vh;
   height: 80vh;
 }
+
 .square {
   /* border: 1px darkslategrey solid; */
   width: 10vh;
@@ -30,20 +34,25 @@ body {
   line-height: 10vh;
   font-size: 7.5vh;
 }
+
 .light {
-  background: beige;
- 
+  background: rgb(182, 182, 102);
+
 }
+
 .dark {
-  background: purple;
+  background: rgb(71, 70, 71);
   opacity: 0, 8;
 }
+
 .black {
   color: black;
 }
+
 .white {
   color: white;
 }
+
 .possibleMove {
-  background: silver;
+  background: rgb(241, 199, 199);
 }
