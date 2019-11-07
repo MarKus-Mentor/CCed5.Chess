@@ -13,13 +13,16 @@ class Pawn extends Piece {
 
     const possibleMoves = [];
 
-    if (this.side == 'white') {
+    if (this.side == 'white' && `${(this.x = 6)}, ${this.y}`) {
       this.x - 1 > 0 && possibleMoves.push(`${this.x - 1},${this.y}`);
       this.x - 2 > 0 && possibleMoves.push(`${this.x - 2},${this.y}`);
-    } else if (this.side == 'black') {
-      this.y + 1 > 0 && possibleMoves.push(`${this.x + 1},${this.y}`);
-      this.y + 2 > 0 && possibleMoves.push(`${this.x + 2},${this.y}`);
+    } else if (this.side == 'white' && `${(this.x = !6)}, ${this.y}`) {
+      this.x - 1 > 0 && possibleMoves.push(`${this.x - 1},${this.y}`);
+    } else if (this.side == 'black' && `${(this.x = 1)}, ${this.y}`) {
+      this.x + 1 > 0 && possibleMoves.push(`${this.x + 1},${this.y}`);
+      this.x + 2 > 0 && possibleMoves.push(`${this.x + 2},${this.y}`);
     }
+
     return possibleMoves;
   }
 
