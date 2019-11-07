@@ -33,7 +33,6 @@ class Pawn extends Piece {
     }
     return possibleMoves;
   }
-
   promote() {}
   enPassant() {}
 }

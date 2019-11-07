@@ -1,45 +1,49 @@
-html{
-    margin: 0;
+html {
+  margin: 0;
 }
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-#wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+body {
+  background: url(img/chess.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+#wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-#board{
-    display: flex;
-    flex-wrap: wrap;
-    outline: 5px black solid;
-    width: 80vh;
-    height: 80vh;
+#board {
+  display: flex;
+  flex-wrap: wrap;
+  outline: 5px black solid;
+  width: 80vh;
+  height: 80vh;
 }
-.square{
-    /* border: 1px darkslategrey solid; */
-    width: 10vh;
-    height: 10vh;
-    text-align:center;
-    line-height: 10vh;
-    font-size: 7.5vh;
-
+.square {
+  /* border: 1px darkslategrey solid; */
+  width: 10vh;
+  height: 10vh;
+  text-align: center;
+  line-height: 10vh;
+  font-size: 7.5vh;
 }
-.light{
-    background: rgb(215, 235, 243);
+.light {
+  background: #9b8776;
+  opacity: 0.8;
 }
-.dark{
-    background:rgb(43, 43, 43);
+.dark {
+  background: #43322a;
+  opacity: 0, 8;
 }
-.black{
-    color:black;
+.black {
+  color: black;
 }
-.white{
-    color:silver;
+.white {
+  color: white;
 }
-.possibleMove{
-
-    background:rgba(222, 247, 2, 0.6);
+.possibleMove {
+  background: silver;
 }
