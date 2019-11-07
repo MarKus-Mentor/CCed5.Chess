@@ -6,7 +6,7 @@ class Pawn extends Piece {
     this.name = 'pawn';
     this.display = `<i class="fas fa-chess-pawn ${side}"></i>`;
   }
-  findLegalMovesPawn() {
+  findLegalMoves() {
     // console.log(this.x, this.y);
     const possibleMoves = [];
     if (this.side == 'white') {
