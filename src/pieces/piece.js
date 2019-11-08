@@ -6,6 +6,7 @@ class Piece {
     this.y = y;
     this.side = side; //'black' or 'white'
   }
+
   move(id) {
     const newX = Number(id[0]);
     const newY = Number(id[2]);
@@ -19,6 +20,10 @@ class Piece {
     this.y = newY;
     board[this.x][this.y] = this;
     document.getElementById(id).innerHTML = this.display;
+
+    // log move to the console
+    const yArr = ["A", "B", "C", "D", "E", "F", "G", "H"];
+    console.log(`${this.side} ${this.name} go to ${yArr[this.y]}-${this.x}`);
   }
 
   findLegalMoves() {}
