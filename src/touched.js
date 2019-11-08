@@ -7,7 +7,7 @@ const touched = e => {
   const y = e.currentTarget.id[2];
   let chessSide = 'white';
 
-  resetPodswietlenia();
+  resetBacklight();
 
   if(movesNumber%2 == 0) chessSide = 'white';
   else chessSide = 'black';
@@ -21,13 +21,13 @@ const touched = e => {
     document.getElementById(el).className += ` possibleMove`;
     document.getElementById(el).addEventListener('click', e => {
       board[x][y].move(e.currentTarget.id);
-      resetPodswietlenia();
+      resetBacklight();
       movesNumber++;
     });
   }
 };
 
-function resetPodswietlenia ()
+function resetBacklight ()
 {
   for (let x = 0; x < board.length; x++) {
     for (let y = 0; y < board[x].length; y++) {
