@@ -33,7 +33,11 @@ class King extends Piece {
       rightBound && possibleMoves.push(`${this.x + 1},${this.y + 1}`);
     }
 
-    return possibleMoves;
+    // If place is taken
+    return possibleMoves.filter(p => {
+        const [x, y] = p.split(',');
+        return !board[x][y];
+      });
   }
 }
 
