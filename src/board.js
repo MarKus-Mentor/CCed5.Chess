@@ -2,6 +2,7 @@ import Pawn from './pieces/pawn';
 import Bishop from './pieces/bishop';
 import Knight from './pieces/knight';
 import King from './pieces/king';
+import Rook from './pieces/rook';
 
 
 const board = new Array(8);
