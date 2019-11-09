@@ -10,14 +10,14 @@ class Pawn extends Piece {
   }
 
   findLegalMoves() {
-    console.log(this.x, this.y);
-
     const possibleMoves = [];
+
     //white
-    if (this.side === "white") {
+    if (this.side === "white" && this.x !== 0) {
       if (!board[this.x - 1][this.y]) {
         this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y}`);
       }
+
       if (this.x === 6 && !board[this.x - 2][this.y]) {
         this.x - 2 >= 0 && possibleMoves.push(`${this.x - 2},${this.y}`);
       }
@@ -35,7 +35,7 @@ class Pawn extends Piece {
       }
     }
     //black
-    if (this.side === "black") {
+    if (this.side === "black" && this.x !== 7) {
       if (!board[this.x + 1][this.y]) {
         this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y}`);
       }
@@ -46,17 +46,14 @@ class Pawn extends Piece {
         board[this.x + 1][this.y - 1] &&
         board[this.x + 1][this.y - 1].side === "white"
       ) {
-        this.x - 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y - 1}`);
+        this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y - 1}`);
       }
       if (
         board[this.x + 1][this.y + 1] &&
         board[this.x + 1][this.y + 1].side === "white"
       ) {
-        this.x - 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y + 1}`);
+        this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y + 1}`);
       }
-    }
-    if (board[this.x - 1][this.y]) {
-      console.log("dziala");
     }
 
     return possibleMoves;
