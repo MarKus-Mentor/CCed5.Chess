@@ -16,6 +16,19 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#logs {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  margin-left: 10%;
+  width: 40vh;
+  outline: 5px silver solid;
+  background-color: rgb(68, 55, 45);
+  color: white;
 }
 
 #board {

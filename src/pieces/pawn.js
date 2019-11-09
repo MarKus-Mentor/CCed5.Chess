@@ -5,7 +5,7 @@ class Pawn extends Piece {
   constructor(x, y, side) {
     super(x, y, side);
     this.name = "pawn";
-     this.display = `<i class="fas fa-chess-pawn ${side}"></i>`;
+    this.display = `<i class="fas fa-chess-pawn ${side}"></i>`;
     //this.display = `<img src= "../../img/pawn_3d_${side}.png" width=60 alt="pawn_${side}"/>`;
   }
 
@@ -55,7 +55,12 @@ class Pawn extends Piece {
         this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y + 1}`);
       }
     }
-
+    let readyForPromotion =
+      (this.side === "white" && this.x === 0) ||
+      (this.side === "black" && this.x === 7);
+    if (readyForPromotion) {
+      alert("wybierz pionka");
+    }
     return possibleMoves;
   }
 
