@@ -54,13 +54,16 @@ class Pawn extends Piece {
       ) {
         this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y + 1}`);
       }
+      let readyForPromotion =
+        (this.side === "black" && this.x === 7) ||
+        (this.side === "white" && this.x === 0);
+
+      if (readyForPromotion) {
+        alert("wybierz pionka");
+        console.log[this.x][this.y];
+      }
     }
-    let readyForPromotion =
-      (this.side === "white" && this.x === 0) ||
-      (this.side === "black" && this.x === 7);
-    if (readyForPromotion) {
-      alert("wybierz pionka");
-    }
+
     return possibleMoves;
   }
 
