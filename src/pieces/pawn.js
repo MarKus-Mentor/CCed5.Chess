@@ -13,48 +13,47 @@ class Pawn extends Piece {
     console.log(this.x, this.y);
 
     const possibleMoves = [];
-
-    if (this.side === "white" && !board[this.x - 1][this.y]) {
-      this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y}`);
+    //white
+    if (this.side === "white") {
+      if (!board[this.x - 1][this.y]) {
+        this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y}`);
+      }
       if (this.x === 6 && !board[this.x - 2][this.y]) {
         this.x - 2 >= 0 && possibleMoves.push(`${this.x - 2},${this.y}`);
-        console.log(!!board[2][0]);
-        console.log(!!board[1][0]);
+      }
+      if (
+        board[this.x - 1][this.y - 1] &&
+        board[this.x - 1][this.y - 1].side === "black"
+      ) {
+        this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y - 1}`);
+      }
+      if (
+        board[this.x - 1][this.y + 1] &&
+        board[this.x - 1][this.y + 1].side === "black"
+      ) {
+        this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y + 1}`);
       }
     }
-    if (
-      this.side === "white" &&
-      board[this.x - 1][this.y - 1] &&
-      board[this.x - 1][this.y - 1].side === "black"
-    ) {
-      this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y - 1}`);
-    }
-    if (
-      this.side === "white" &&
-      board[this.x - 1][this.y + 1] &&
-      board[this.x - 1][this.y + 1].side === "black"
-    ) {
-      this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y + 1}`);
-    }
-    if (this.side === "black" && !board[this.x + 1][this.y]) {
-      this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y}`);
+    //black
+    if (this.side === "black") {
+      if (!board[this.x + 1][this.y]) {
+        this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y}`);
+      }
       if (this.x === 1 && !board[this.x + 2][this.y]) {
         this.x + 2 <= 7 && possibleMoves.push(`${this.x + 2},${this.y}`);
       }
-    }
-    if (
-      this.side === "black" &&
-      board[this.x + 1][this.y - 1] &&
-      board[this.x + 1][this.y - 1].side === "white"
-    ) {
-      this.x - 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y - 1}`);
-    }
-    if (
-      this.side === "black" &&
-      board[this.x + 1][this.y + 1] &&
-      board[this.x + 1][this.y + 1].side === "white"
-    ) {
-      this.x - 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y + 1}`);
+      if (
+        board[this.x + 1][this.y - 1] &&
+        board[this.x + 1][this.y - 1].side === "white"
+      ) {
+        this.x - 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y - 1}`);
+      }
+      if (
+        board[this.x + 1][this.y + 1] &&
+        board[this.x + 1][this.y + 1].side === "white"
+      ) {
+        this.x - 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y + 1}`);
+      }
     }
     if (board[this.x - 1][this.y]) {
       console.log("dziala");
@@ -62,6 +61,7 @@ class Pawn extends Piece {
 
     return possibleMoves;
   }
+
   promote() {}
   enPassant() {}
 }
