@@ -37,8 +37,6 @@ const touched = e => {
     document.getElementById(el).className += ` possibleMove`;
     document.getElementById(el).addEventListener('click', e => {
       board[x][y].move(e.currentTarget.id);
-      resetBacklight();
-      movesNumber = !Boolean(movesNumber);
     });
   }
 };
