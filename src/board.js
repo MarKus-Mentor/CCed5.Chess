@@ -70,4 +70,13 @@ board[bishop.x][bishop.y] = bishop;
 bishop = new Bishop(0,5, 'black');
 board[bishop.x][bishop.y] = bishop;
 
+let rook = new Rook(7,0,'white');
+board[rook.x][rook.y] = rook;
+rook = new Rook(7,7,'white');
+board[rook.x][rook.y] = rook;
+rook = new Rook(0,0,'black');
+board[rook.x][rook.y] = rook;
+rook = new Rook(0,7,'black');
+board[rook.x][rook.y] = rook;
+
 export default board;
