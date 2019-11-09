@@ -7,12 +7,12 @@ class Queen extends Piece {
     this.name = 'queen';
     this.display = `<i class="fas fa-chess-queen ${side}"></i>`; //fontawesome queen
   }
-  
+
   findLegalMoves() {
     const possibleMoves = [];
 
     // ruchy w gore
-    for(let i=1; i<8; i++) {
+    for(let i=1; i<board.length; i++) {
       // sprawdzamy czy jest takie pole
       if(this.x - i >= 0) {
         // jesli puste to mozna i sprawdzamy kolejne
@@ -27,8 +27,8 @@ class Queen extends Piece {
     }
 
     // ruchy w skosne prawo && gora
-    for(let i=1; i<8; i++) {
-      if(this.x - i >= 0 && this.y + i <= 7) {
+    for(let i=1; i<board.length; i++) {
+      if(this.x - i >= 0 && this.y + i <= board.length - 1) {
         if(!board[this.x - i][this.y + i])
         possibleMoves.push(`${this.x - i},${this.y + i}`);
         else if (this.side !== board[this.x - i][this.y + i].side)
@@ -38,8 +38,8 @@ class Queen extends Piece {
     }
 
     // ruchy w prawo
-    for(let i=1; i<8; i++) {
-      if(this.y + i <= 7) {
+    for(let i=1; i<board.length; i++) {
+      if(this.y + i <= board.length - 1) {
         if(!board[this.x][this.y + i])
         possibleMoves.push(`${this.x},${this.y + i}`);
         else if (this.side !== board[this.x][this.y + i].side)
@@ -49,8 +49,8 @@ class Queen extends Piece {
     }
 
     // ruchy w skosne prawo && dol
-    for(let i=1; i<8; i++) {  
-      if(this.x + i <= 7 && this.y + i <= 7) {
+    for(let i=1; i<board.length; i++) {  
+      if(this.x + i <= board.length - 1 && this.y + i <= board.length - 1) {
         if(!board[this.x + i][this.y + i])
         possibleMoves.push(`${this.x + i},${this.y + i}`);
         else if (this.side !== board[this.x + i][this.y + i].side)
@@ -60,8 +60,8 @@ class Queen extends Piece {
     }
 
     // ruchy w dol
-    for(let i=1; i<8; i++) {
-      if(this.x + i <= 7) {
+    for(let i=1; i<board.length; i++) {
+      if(this.x + i <= board.length - 1) {
         if(!board[this.x + i][this.y])
         possibleMoves.push(`${this.x + i},${this.y}`);
         else if (this.side !== board[this.x + i][this.y].side)
@@ -71,8 +71,8 @@ class Queen extends Piece {
     }
 
     // ruchy w skosne lewo && dol
-    for(let i=1; i<8; i++) {
-      if(this.x + i <= 7 && this.y - i >= 0) {
+    for(let i=1; i<board.length; i++) {
+      if(this.x + i <= board.length - 1 && this.y - i >= 0) {
         if(!board[this.x + i][this.y - i])
         possibleMoves.push(`${this.x + i},${this.y - i}`);
         else if (this.side !== board[this.x + i][this.y - i].side)
@@ -82,7 +82,7 @@ class Queen extends Piece {
     }
 
     // ruchy w lewo
-    for(let i=1; i<8; i++) {
+    for(let i=1; i<board.length; i++) {
       if(this.y - i >= 0) {
         if(!board[this.x][this.y - i])
         possibleMoves.push(`${this.x},${this.y - i}`);
@@ -93,7 +93,7 @@ class Queen extends Piece {
     }
 
     // ruchy w skosne lewo && gora
-    for(let i=1; i<8; i++) {
+    for(let i=1; i<board.length; i++) {
       if(this.x - i >= 0 && this.y - i >= 0) {
         if(!board[this.x - i][this.y - i])
         possibleMoves.push(`${this.x - i},${this.y - i}`);
