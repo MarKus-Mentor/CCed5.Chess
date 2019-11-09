@@ -5,8 +5,8 @@ class Pawn extends Piece {
   constructor(x, y, side) {
     super(x, y, side);
     this.name = "pawn";
-    // this.display = `<i class="fas fa-chess-pawn ${side}"></i>`;
-    this.display = `<img src= "../../img/pawn_3d_${side}.png" width=60 alt="pawn_${side}"/>`;
+     this.display = `<i class="fas fa-chess-pawn ${side}"></i>`;
+    //this.display = `<img src= "../../img/pawn_3d_${side}.png" width=60 alt="pawn_${side}"/>`;
   }
 
   findLegalMoves() {

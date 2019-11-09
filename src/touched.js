@@ -9,7 +9,6 @@ const touched = e => {
   let chessSide = 'white';
 
   resetBacklight();
-
   if(movesNumber) chessSide = 'white';
   else chessSide = 'black';
 
@@ -24,11 +23,16 @@ const touched = e => {
 
   for (let el of possibleMoves) {
     let childKnot = document.getElementById(el).childNodes;
+    console.log("Elementy z dziecmi: " + childKnot);
     if(document.getElementById(el).childElementCount!=0) 
     {
+      console.log(board[x][y].side);
       if(childKnot.item(0).classList[2] == board[x][y].side) {
         let ourElementsPosition = possibleMoves.indexOf(document.getElementById(el).id);
+        console.log(document.getElementById(el).id);
+        console.log("Przed: " + possibleMoves);
         possibleMoves.splice(ourElementsPosition,1);
+        console.log("Po: " + possibleMoves);
       } 
     }
   }
@@ -37,6 +41,7 @@ const touched = e => {
     document.getElementById(el).className += ` possibleMove`;
     document.getElementById(el).addEventListener('click', e => {
       board[x][y].move(e.currentTarget.id);
+      movesNumber = !Boolean(movesNumber);
     });
   }
 };
