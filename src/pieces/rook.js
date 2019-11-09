@@ -1,4 +1,5 @@
 import Piece from './piece';
+import board from '../board';
 
 class Rook extends Piece {
   constructor(x, y, side) {
