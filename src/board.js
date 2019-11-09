@@ -1,5 +1,6 @@
 import Pawn from './pieces/pawn';
 import Knight from './pieces/knight';
+import King from './pieces/king';
 
 
 const board = new Array(8);
