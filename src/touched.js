@@ -1,6 +1,7 @@
 import board from './board';
 
-var movesNumber = 1;
+let movesNumber = false;
+let unclick = 88;
 
 const touched = e => {
   const x = e.currentTarget.id[0];
@@ -9,20 +10,35 @@ const touched = e => {
 
   resetBacklight();
 
-  if(movesNumber%2 == 0) chessSide = 'white';
+  if(movesNumber) chessSide = 'white';
   else chessSide = 'black';
 
-  if (!board[x][y] || board[x][y].side == chessSide) {
+  if (!board[x][y] || board[x][y].side == chessSide || unclick==x+y) {
+    resetBacklight(); 
+    unclick = 88;
     return;
   }
+  unclick = x+y;
 
   const possibleMoves = board[x][y].findLegalMoves();
+
+  for (let el of possibleMoves) {
+    let childKnot = document.getElementById(el).childNodes;
+    if(document.getElementById(el).childElementCount!=0) 
+    {
+      if(childKnot.item(0).classList[2] == board[x][y].side) {
+        let ourElementsPosition = possibleMoves.indexOf(document.getElementById(el).id);
+        possibleMoves.splice(ourElementsPosition,1);
+      } 
+    }
+  }
+
   for (let el of possibleMoves) {
     document.getElementById(el).className += ` possibleMove`;
     document.getElementById(el).addEventListener('click', e => {
       board[x][y].move(e.currentTarget.id);
       resetBacklight();
-      movesNumber++;
+      movesNumber = !Boolean(movesNumber);
     });
   }
 };
