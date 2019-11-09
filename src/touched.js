@@ -25,6 +25,7 @@ const touched = e => {
           // document.getElementById(`${x},${y}`).removeEventListener('click');
           document.getElementById(`${x},${y}`).addEventListener('click', e => {
             touched(e);
+            console.log(x, y);
           });
         }
       }
