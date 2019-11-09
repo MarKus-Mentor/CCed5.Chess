@@ -1,4 +1,5 @@
 import Pawn from './pieces/pawn';
+import Bishop from './pieces/bishop';
 import Knight from './pieces/knight';
 import King from './pieces/king';
 
@@ -59,5 +60,14 @@ knight = new Knight(0, 1, 'black');
 board[knight.x][knight.y] = knight;
 knight = new Knight(0, 6, 'black');
 board[knight.x][knight.y] = knight;
+
+let bishop = new Bishop(7,2, 'white');
+board[bishop.x][bishop.y] = bishop;
+bishop = new Bishop(7,5, 'white');	
+board[bishop.x][bishop.y] = bishop;
+bishop = new Bishop(0,2, 'black');
+board[bishop.x][bishop.y] = bishop;
+bishop = new Bishop(0,5, 'black');
+board[bishop.x][bishop.y] = bishop;
 
 export default board;
