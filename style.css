@@ -20,7 +20,7 @@ body {
   margin-right: 10%;
 }
 
-#logs {
+#moves {
   display: flex;
   justify-content: center;
   height: 80vh;
@@ -28,7 +28,7 @@ body {
   width: 40vh;
   outline: 5px silver solid;
   background-color: rgb(68, 55, 45);
-  color: white;
+  color: white
 }
 
 #board {
