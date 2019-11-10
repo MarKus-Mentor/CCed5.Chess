@@ -31,9 +31,9 @@ class Pawn extends Piece {
           this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y + 1}`);
         }
       }
-      // if (this.x === 0) {
-      //   alert("wybierz bialego pionka");
-      // }
+      if (this.x === 0) {
+        alert("wybierz bialego pionka");
+      }
     }
 
     if (this.side === "black") {

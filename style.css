@@ -47,6 +47,7 @@ body {
   width: 80vh;
   height: 80vh;
   background-color: white;
+  opacity: 0.9;
 }
 
 .hidden {
