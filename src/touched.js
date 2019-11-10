@@ -24,10 +24,10 @@ console.log(unclick);
   for (let el of possibleMoves) {
     let childKnot = document.getElementById(el).childNodes;
     console.log("Elementy z dziecmi: " + childKnot);
-    if(document.getElementById(el).childElementCount!=0) 
+    if(document.getElementById(el).childElementCount!=0)                  // MENTOR: pobieranie danych z DOM zamiast JS = 'childElementCount'
     {
-      console.log(board[x][y].side);
-      if(childKnot.item(0).classList[2] == board[x][y].side) {
+      console.log(board[x][y].side);                                      // MENTOR: to chyba wygląda na generalne usuwanie 'swoich' z 'possibleMoves'
+      if(childKnot.item(0).classList[2] == board[x][y].side) {            // MENTOR: znowu '==' zamiast '==='; a co kiedy zmieni się kolejność w 'classList'? Dlatego IMG nie działa!
         let ourElementsPosition = possibleMoves.indexOf(document.getElementById(el).id);
         console.log(document.getElementById(el).id);
         console.log("Przed: " + possibleMoves);
