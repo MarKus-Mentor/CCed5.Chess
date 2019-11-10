@@ -1,19 +1,19 @@
 import board from './board';
 
-let movesNumber = false;
-let unclick = 88;
+let movesNumber = false;    // MENTOR: nazwa zmiennej - co mówi?
+let unclick = 88;           // MENTOR: czy '88' czemuś służy?
 
 const touched = e => {
   const x = e.currentTarget.id[0];
   const y = e.currentTarget.id[2];
   let chessSide = 'white';
-
+console.log(unclick);
   resetBacklight();
-  if(movesNumber) chessSide = 'white';
+  if(movesNumber) chessSide = 'white';      // MENTOR: może skrócić zapis?
   else chessSide = 'black';
 
-  if (!board[x][y] || board[x][y].side == chessSide || unclick==x+y) {
-    resetBacklight(); 
+  if (!board[x][y] || board[x][y].side == chessSide || unclick==x+y) {    // MENTOR: działa, dopóki 'x' i 'y' są stringami; ja bym się zabezpieczył w przypadku 'x+y'
+    resetBacklight();                                                     // MENTOR: wytłumaczyć warunek
     unclick = 88;
     return;
   }
@@ -41,7 +41,7 @@ const touched = e => {
     document.getElementById(el).className += ` possibleMove`;
     document.getElementById(el).addEventListener('click', e => {
       board[x][y].move(e.currentTarget.id);
-      movesNumber = !Boolean(movesNumber);
+      movesNumber = !Boolean(movesNumber);                      // MENTOR: poprawić dziwoląga
     });
   }
 };

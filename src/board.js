@@ -16,7 +16,7 @@ pawn = new Pawn(6, 1, 'white');
 board[pawn.x][pawn.y] = pawn;
 pawn = new Pawn(6, 2, 'white');
 board[pawn.x][pawn.y] = pawn;
-pawn = new Pawn(6, 2, 'white');
+pawn = new Pawn(6, 2, 'white');   // MENTOR: za dużo pionów; może w pętli 'for'?
 board[pawn.x][pawn.y] = pawn;
 pawn = new Pawn(6, 3, 'white');
 board[pawn.x][pawn.y] = pawn;
@@ -47,7 +47,7 @@ board[pawn.x][pawn.y] = pawn;
 pawn = new Pawn(1, 7, 'black');
 board[pawn.x][pawn.y] = pawn;
 
-const wKing = new King(7, 4, 'white');
+const wKing = new King(7, 4, 'white');    // MENTOR: inaczej niż pozostali, ale to nie grzech
 board[wKing.x][wKing.y] = wKing;
 
 const bKing = new King(0, 4, 'black');

@@ -12,9 +12,9 @@ class Queen extends Piece {
     const possibleMoves = [];
 
     // ruchy w gore
-    for(let i=1; i<board.length; i++) {
+    for(let i=1; i<board.length; i++) {           // MENTOR: to może lepiej 'i < this.x'?
       // sprawdzamy czy jest takie pole
-      if(this.x - i >= 0) {
+      if(this.x - i >= 0) {                       // MENTOR: uwzględniajac poprzednie, warunek niepotrzebny
         // jesli puste to mozna i sprawdzamy kolejne
         if (!board[this.x - i][this.y])
         possibleMoves.push(`${this.x - i},${this.y}`);

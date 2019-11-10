@@ -34,7 +34,7 @@ class King extends Piece {
     }
 
     // If place is taken
-    return possibleMoves.filter(p => {
+    return possibleMoves.filter(p => {      // MENTOR: a gdzie bicia?
         const [x, y] = p.split(',');
         return !board[x][y];
       });

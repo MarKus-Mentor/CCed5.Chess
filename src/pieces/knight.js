@@ -8,7 +8,7 @@ class Knight extends Piece {
   }
   findLegalMoves() {
     const possibleMoves = [];
-    //Pierwsza możliwość Dwie kratki po Y, jedna po X
+    //Pierwsza możliwość Dwie kratki po Y, jedna po X             // MENTOR: opis chyba nieadekwatny w tym miejscu
       this.x - 2 >= 0 && this.y - 1 >= 0 && possibleMoves.push(`${this.x - 2},${this.y-1}`);
       this.x - 2 >= 0 && this.y + 1 < 8 && possibleMoves.push(`${this.x - 2},${this.y+1}`);
       this.x + 2 < 8 && this.y - 1 >= 0 && possibleMoves.push(`${this.x + 2},${this.y-1}`);
