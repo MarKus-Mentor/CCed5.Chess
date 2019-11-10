@@ -11,6 +11,11 @@ body {
   background-size: cover;
 }
 
+.green {
+  background-color: green;
+  color: green
+}
+
 #wrapper {
   display: flex;
   justify-content: center;
@@ -18,6 +23,34 @@ body {
   height: 100vh;
   margin-left: 10%;
   margin-right: 10%;
+}
+
+
+#promotionDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+}
+
+
+
+#promotion {
+  display: flex;
+  flex-wrap: wrap;
+  outline: 5px black solid;
+  width: 80vh;
+  height: 80vh;
+  background-color: white;
+}
+
+.hidden {
+  display: none !important
 }
 
 #moves {
