@@ -21,10 +21,25 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
+table,
+tr,
+th,
+td {
+  display: block;
+}
+
+tbody {
+  display: flex;
+}
+
+tr {
+  flex-grow: 1;
+  float: left;
+}
 
 #promotionDiv {
   text-align: center;
@@ -38,8 +53,6 @@ body {
   opacity: 0.9;
 
 }
-
-
 
 .hidden {
   display: none !important
