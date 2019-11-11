@@ -1,21 +1,13 @@
 html {
   margin: 0;
 }
-
 * {
   box-sizing: border-box;
 }
-
 body {
   background: url(img/chess.jpg) no-repeat center center fixed;
   background-size: cover;
 }
-
-.green {
-  background-color: green;
-  color: green
-}
-
 #wrapper {
   display: flex;
   justify-content: center;
@@ -24,23 +16,27 @@ body {
   margin-left: 5%;
   margin-right: 5%;
 }
-
+#board {
+    display: flex;
+    flex-wrap: wrap;
+    outline: 4px black solid;
+    width: 80vh;
+    height: 80vh;
+    position: relative;
+}
 table,
 tr,
 th,
 td {
   display: block;
 }
-
 tbody {
   display: flex;
 }
-
 tr {
   flex-grow: 1;
   float: left;
 }
-
 #promotionDiv {
   text-align: center;
   height: 50vh;
@@ -51,13 +47,10 @@ tr {
   color: white;
   z-index: 10;
   opacity: 0.9;
-
 }
-
 .hidden {
   display: none !important
 }
-
 #moves {
   display: flex;
   justify-content: center;
@@ -69,51 +62,71 @@ tr {
   color: white;
   opacity: 0.9;
 }
-
-#board {
-  display: flex;
-  flex-wrap: wrap;
-  outline: 5px silver solid;
-  width: 80vh;
-  height: 80vh;
-}
-
-.square {
-  /* border: 1px darkslategrey solid; */
-  width: 10vh;
-  height: 10vh;
-  text-align: center;
-  line-height: 10vh;
-  font-size: 7.5vh;
-}
-
 .promClass {
   color: white;
   padding: 10px
 }
-
 .hover:hover {
   color: grey
 }
-
+/* squares start */
+.square {
+    /* border: 1px darkslategrey solid; */
+    width: 10vh;
+    height: 10vh;
+    text-align: center;
+    line-height: 10vh;
+    font-size: 7.5vh;
+}
 .light {
-  background: #c0b0a1;
-
+    background: #c0b0a1;
+    color: rgb(68, 55, 45);
 }
-
 .dark {
-  background: rgb(68, 55, 45);
-  opacity: 0, 7;
+    background:rgb(68, 55, 45);
+    color: #c0b0a1;
+    opacity: 0, 7;
 }
-
 .black {
   color: black;
 }
-
 .white {
   color: white;
 }
-
 .possibleMove {
   background: rgb(210, 216, 241);
+}
+/* squares end */
+/* indexes start */
+.index {
+  position: absolute;
+  /* border: 1px darkslategrey solid; */
+  width: 2.5vh;
+  height: 2.5vh;
+  line-height: 2.5vh;
+  font-size: 2.5vh;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0.3vh 0.5vh; 
+}
+.index.num {
+    background-color: transparent;
+}
+.index.letter {
+    background-color: transparent;
+}
+.num {
+    text-align: left;
+}
+.letter {
+    bottom: 0;
+    text-align: right;
+}
+.lightIndex {
+    color: rgb(68, 55, 45);
+}
+/* indexes end */
+.green {
+  background-color: green;
+  color: green
 }
