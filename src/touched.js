@@ -9,9 +9,33 @@ const touched = e => {
   const possibleMoves = board[x][y].findLegalMoves();
   for (let el of possibleMoves) {
     document.getElementById(el).className += ` possibleMove`;
+    // zmiana koloru indeksow na czarne na polach possibleMoves
+    if(el === "7,0") {
+    document.getElementById(`index${el}`).className = document
+      .getElementById(`index${el}`)
+      .className.replace(`dark`, `lightIndex`);
+    document.getElementById(`indexLetter${el}`).className = document
+      .getElementById(`indexLetter${el}`)
+      .className.replace(`dark`, `lightIndex`);
+    }
+    else if(el.endsWith(",0"))
+    document.getElementById(`index${el}`).className = document
+      .getElementById(`index${el}`)
+      .className.replace(`dark`, `lightIndex`);
+    else if(el.startsWith("7,"))
+    document.getElementById(`indexLetter${el}`).className = document
+      .getElementById(`indexLetter${el}`)
+      .className.replace(`dark`, `lightIndex`);
     document.getElementById(el).addEventListener('click', e => {
       board[x][y].move(e.currentTarget.id);
       for (let x = 0; x < board.length; x++) {
+        // zmiana koloru indeksow na poczatkowe po ruchu
+        document.getElementById(`index${x},0`).className = document
+          .getElementById(`index${x},0`)
+          .className.replace(`lightIndex`, `dark`);
+        document.getElementById(`indexLetter7,${x}`).className = document
+          .getElementById(`indexLetter7,${x}`)
+          .className.replace(`lightIndex`, `dark`);
         for (let y = 0; y < board[x].length; y++) {
           document.getElementById(`${x},${y}`).className = document
             .getElementById(`${x},${y}`)
