@@ -1,10 +1,16 @@
-html{
-    margin: 0;
+html {
+  margin: 0;
 }
-*{
-    box-sizing: border-box;
+
+* {
+  box-sizing: border-box;
 }
-#wrapper{
+
+body {
+  background: url(img/chess.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+#wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,22 +57,23 @@ html{
     text-align: right;
 }
 .light{
-    background: rgb(215, 235, 243);
-    color: rgb(43, 43, 43);
+    background: #c0b0a1;
+    color: rgb(68, 55, 45);
 }
 .lightIndex {
-    color: rgb(43, 43, 43);
+    color: rgb(68, 55, 45);
 }
 .dark{
-    background:rgb(43, 43, 43);
-    color: rgb(215, 235, 243);
+    background:rgb(68, 55, 45);
+    color: #c0b0a1;
+    opacity: 0, 7;
 }
-.black{
-    color:black;
+.black {
+  color: black;
 }
-.white{
-    color:silver;
+.white {
+  color: white;
 }
-.possibleMove{
-    background:rgba(222, 247, 2, 0.6);
+.possibleMove {
+  background: rgb(210, 216, 241);
 }
