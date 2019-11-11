@@ -1,8 +1,7 @@
 import board from '../board';
 
-let logNumber = 0;
 let movesArr = JSON.parse(localStorage.getItem("moves")) || [];
-
+let logNumber = (movesArr.length/2).toFixed() || 0;
 
 class Piece {
   constructor(x, y, side) {
