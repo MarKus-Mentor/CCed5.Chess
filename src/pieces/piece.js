@@ -1,5 +1,9 @@
 import board from '../board';
 
+let logNumber = 0;
+let movesArr = JSON.parse(localStorage.getItem("moves")) || [];
+
+
 class Piece {
   constructor(x, y, side) {
     this.x = x;
@@ -23,11 +27,52 @@ class Piece {
     const newXY = {...board[this.x][this.y]};
     document.getElementById(id).innerHTML = this.display;
 
-    // log move to the console
-    const yArr = ["A", "B", "C", "D", "E", "F", "G", "H"];
-    const figure = `${this.side} ${this.name}`;
-    const figureLocation = `${yArr[this.y]}${this.x}`;
-    console.log(`${figure} go to ${figureLocation}`);
+
+    // add logs of moves to HTML and save in localStorage
+    let nameSymbol;
+    switch (this.name) {
+      case "knight":
+        nameSymbol = "N";
+        break;
+      case "bishop":
+        nameSymbol = "B";
+        break;
+      case "king":
+        nameSymbol = "K";
+        break;
+      case "rook":
+        nameSymbol = "T";
+        break;
+      case "queen":
+        nameSymbol = "Q";
+        break;
+      default:
+        nameSymbol = "";
+        break;
+    }
+    const yArr = ["a", "b", "c", "d", "e", "f", "g", "h"];
+    let newLog = "";
+
+    if (this.side === "white") {
+        newLog = `${++logNumber}. ${nameSymbol} ${yArr[oldXY.y]}${oldXY.x}-${yArr[newXY.y]}${newXY.x} --- `;
+        movesArr.push(newLog);
+        localStorage.setItem("moves", JSON.stringify(movesArr));
+      } else {
+        newLog = `${nameSymbol} ${yArr[oldXY.y]}${oldXY.x}-${yArr[newXY.y]}${newXY.x}`;
+        movesArr.push(newLog);
+        localStorage.setItem("moves", JSON.stringify(movesArr));
+      }
+
+    const moves = document.getElementById('moves');
+    const breakNode = document.createElement("br");
+    const logNode = document.createElement("span");
+    const logText = document.createTextNode(newLog);
+    logNode.appendChild(logText);
+    moves.appendChild(logNode);
+    if (!newLog.includes('---')) {
+      moves.appendChild(breakNode)
+    }
+
 
     // add move to localStorage
     const boardStorage = JSON.parse(localStorage.getItem("board"));
