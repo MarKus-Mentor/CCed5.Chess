@@ -69,42 +69,15 @@ if (boardStorage) {
     }
   }
 } else {
-  let pawn = new Pawn(6, 0, 'white');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(6, 1, 'white');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(6, 2, 'white');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(6, 2, 'white');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(6, 3, 'white');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(6, 4, 'white');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(6, 5, 'white');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(6, 6, 'white');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(6, 7, 'white');
-  board[pawn.x][pawn.y] = pawn;
-  //black
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(1, 0, 'black');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(1, 1, 'black');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(1, 2, 'black');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(1, 3, 'black');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(1, 4, 'black');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(1, 5, 'black');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(1, 6, 'black');
-  board[pawn.x][pawn.y] = pawn;
-  pawn = new Pawn(1, 7, 'black');
-  board[pawn.x][pawn.y] = pawn;
+  let pawn;
+  for (let y = 0; y < 8; y++) {
+    pawn = new Pawn(6, y, "white");
+    board[6][pawn.y] = pawn;
+  }
+  for (let y = 0; y < 8; y++) {
+    pawn = new Pawn(1, y, "black");
+    board[1][pawn.y] = pawn;
+  }
 
   const wKing = new King(7, 4, 'white');
   board[wKing.x][wKing.y] = wKing;

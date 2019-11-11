@@ -11,17 +11,56 @@ body {
   background-size: cover;
 }
 
+.green {
+  background-color: green;
+  color: green
+}
+
 #wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
+#promotionDiv {
+  text-align: center;
+  height: 50vh;
+  margin-right: 2%;
+  width: 15vh;
+  outline: 5px silver solid;
+  background-color: rgb(68, 55, 45);
+  color: white;
+  z-index: 10;
+  opacity: 0.9;
+
+}
+
+
+
+.hidden {
+  display: none !important
+}
+
+#moves {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  margin-left: 2%;
+  width: 30vh;
+  outline: 5px silver solid;
+  background-color: rgb(68, 55, 45);
+  color: white;
+  opacity: 0.9;
 }
 
 #board {
   display: flex;
   flex-wrap: wrap;
-  outline: 5px black solid;
+  outline: 5px silver solid;
   width: 80vh;
   height: 80vh;
 }
@@ -35,25 +74,23 @@ body {
   font-size: 7.5vh;
 }
 
-#moves {
-  display: inline;
-  padding: 1%;
-  overflow: auto;
-  height: 80vh;
-  margin-left: 4%;
-  width: 40vh;
-  outline: 5px black solid;
-  background-color: rgb(68, 55, 45);
+.promClass {
   color: white;
+  padding: 10px
+}
+
+.hover:hover {
+  color: grey
 }
 
 .light {
   background: #c0b0a1;
+
 }
 
 .dark {
   background: rgb(68, 55, 45);
-  /*opacity: 0, 7;*/
+  opacity: 0, 7;
 }
 
 .black {

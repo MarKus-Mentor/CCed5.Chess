@@ -1,4 +1,4 @@
-import board from '../board';
+import board from "../board";
 
 let movesArr = JSON.parse(localStorage.getItem("moves")) || [];
 let logNumber = (movesArr.length/2).toFixed() || 0;
@@ -17,7 +17,7 @@ class Piece {
     //clearing previous place
     const oldXY = {...board[this.x][this.y]};
     board[this.x][this.y] = null;
-    document.getElementById(`${this.x},${this.y}`).innerHTML = '';
+    document.getElementById(`${this.x},${this.y}`).innerHTML = "";
 
     //setting new
     this.x = newX;
@@ -26,6 +26,14 @@ class Piece {
     const newXY = {...board[this.x][this.y]};
     document.getElementById(id).innerHTML = this.display;
 
+    if (this.name === "pawn") {
+      if (
+        (this.side === "white" && this.x === 0) ||
+        (this.side === "black" && this.x === 7)
+      ) {
+        this.promote();
+      }
+    }
 
     // add logs of moves to HTML and save in local storage
     let nameSymbol;
