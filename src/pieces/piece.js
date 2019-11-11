@@ -41,6 +41,21 @@ class Piece {
   openPromotion() {
     document.getElementById("promotionDiv").classList.remove("hidden");
     console.log("szachy");
+    // document.getElementById("promotionDiv").document.board = new Array(4);
+    // for (let i = 0; i < 1; i++) {
+    //   board[i] = new Array(4);
+    // }
+
+    for (let x = 0; x < 1; x++) {
+      for (let y = 0; y < 5; y++) {
+        const square = document.createElement("div");
+        square.id = `${x},${y}`;
+
+        square.innerHTML = board[x][y] ? board[x][y].display : "";
+        square.className = "square";
+        document.getElementById("board").appendChild(square);
+      }
+    }
   }
   findLegalMoves() {}
 }
