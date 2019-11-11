@@ -1,22 +1,22 @@
 html {
   margin: 0;
 }
-
 * {
   box-sizing: border-box;
 }
-
 body {
   background: url(img/chess.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 #wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-left: 5%;
+  margin-right: 5%;
 }
-#board{
+#board {
     display: flex;
     flex-wrap: wrap;
     outline: 4px black solid;
@@ -24,7 +24,53 @@ body {
     height: 80vh;
     position: relative;
 }
-.square{
+table,
+tr,
+th,
+td {
+  display: block;
+}
+tbody {
+  display: flex;
+}
+tr {
+  flex-grow: 1;
+  float: left;
+}
+#promotionDiv {
+  text-align: center;
+  height: 50vh;
+  margin-right: 2%;
+  width: 15vh;
+  outline: 5px silver solid;
+  background-color: rgb(68, 55, 45);
+  color: white;
+  z-index: 10;
+  opacity: 0.9;
+}
+.hidden {
+  display: none !important
+}
+#moves {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  margin-left: 2%;
+  width: 30vh;
+  outline: 5px silver solid;
+  background-color: rgb(68, 55, 45);
+  color: white;
+  opacity: 0.9;
+}
+.promClass {
+  color: white;
+  padding: 10px
+}
+.hover:hover {
+  color: grey
+}
+/* squares start */
+.square {
     /* border: 1px darkslategrey solid; */
     width: 10vh;
     height: 10vh;
@@ -32,16 +78,36 @@ body {
     line-height: 10vh;
     font-size: 7.5vh;
 }
-.index{
-    position: absolute;
-    /* border: 1px darkslategrey solid; */
-    width: 2.5vh;
-    height: 2.5vh;
-    line-height: 2.5vh;
-    font-size: 2.5vh;
-    font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0.3vh 0.5vh;
+.light {
+    background: #c0b0a1;
+    color: rgb(68, 55, 45);
+}
+.dark {
+    background:rgb(68, 55, 45);
+    color: #c0b0a1;
+    opacity: 0, 7;
+}
+.black {
+  color: black;
+}
+.white {
+  color: white;
+}
+.possibleMove {
+  background: rgb(210, 216, 241);
+}
+/* squares end */
+/* indexes start */
+.index {
+  position: absolute;
+  /* border: 1px darkslategrey solid; */
+  width: 2.5vh;
+  height: 2.5vh;
+  line-height: 2.5vh;
+  font-size: 2.5vh;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0.3vh 0.5vh; 
 }
 .index.num {
     background-color: transparent;
@@ -56,24 +122,11 @@ body {
     bottom: 0;
     text-align: right;
 }
-.light{
-    background: #c0b0a1;
-    color: rgb(68, 55, 45);
-}
 .lightIndex {
     color: rgb(68, 55, 45);
 }
-.dark{
-    background:rgb(68, 55, 45);
-    color: #c0b0a1;
-    opacity: 0, 7;
-}
-.black {
-  color: black;
-}
-.white {
-  color: white;
-}
-.possibleMove {
-  background: rgb(210, 216, 241);
+/* indexes end */
+.green {
+  background-color: green;
+  color: green
 }
