@@ -27,7 +27,6 @@ class Piece {
         (this.side === "black" && this.x === 7)
       ) {
         this.promote();
-        // console.log("biale i zero");
       }
     }
   }

@@ -67,7 +67,6 @@ class Pawn extends Piece {
     return possibleMoves;
   }
   promote() {
-    // let prom;
     let prom;
     let promFigures = ["queen", "bishop", "knight", "rook"];
     const divAccess = document.getElementById("promotionDiv");
@@ -93,6 +92,8 @@ class Pawn extends Piece {
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
       divAccess.classList.add("hidden");
+      // board[this.x][this.y] = null;
+      divAccess.innerHTML = "";
     });
 
     divAccess.appendChild(queen);
@@ -108,6 +109,7 @@ class Pawn extends Piece {
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
       divAccess.classList.add("hidden");
+      divAccess.innerHTML = "";
     });
     divAccess.appendChild(bishop);
 
@@ -122,6 +124,7 @@ class Pawn extends Piece {
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
       divAccess.classList.add("hidden");
+      divAccess.innerHTML = "";
     });
     divAccess.appendChild(knight);
 
@@ -135,8 +138,11 @@ class Pawn extends Piece {
       board[this.x][this.y] = new Queen(this.x, this.y, this.side);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
+
       divAccess.classList.add("hidden");
+      divAccess.innerHTML = "";
     });
+
     divAccess.appendChild(rook);
   }
 
