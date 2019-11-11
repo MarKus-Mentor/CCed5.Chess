@@ -27,16 +27,16 @@ body {
 
 
 #promotionDiv {
-  display: inline;
-  justify-content: center;
-  height: 80vh;
-  margin-right: 15%;
-  width: 40vh;
+  text-align: center;
+  height: 50vh;
+  margin-right: 1%;
+  width: 15vh;
   outline: 5px silver solid;
   background-color: rgb(68, 55, 45);
   color: white;
   z-index: 10;
   opacity: 0.9;
+
 }
 
 
@@ -46,11 +46,11 @@ body {
 }
 
 #moves {
-  display: inline;
+  display: flex;
   justify-content: center;
   height: 80vh;
-  margin-left: 15%;
-  width: 40vh;
+  margin-left: 2%;
+  width: 30vh;
   outline: 5px silver solid;
   background-color: rgb(68, 55, 45);
   color: white;
@@ -60,7 +60,7 @@ body {
 #board {
   display: flex;
   flex-wrap: wrap;
-  outline: 5px black solid;
+  outline: 5px silver solid;
   width: 80vh;
   height: 80vh;
 }

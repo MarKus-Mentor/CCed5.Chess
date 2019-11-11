@@ -1,5 +1,6 @@
 import Piece from "./piece";
 import board from "../board";
+import Queen from "./queen";
 
 class Pawn extends Piece {
   constructor(x, y, side) {
@@ -78,20 +79,63 @@ class Pawn extends Piece {
 
     let queen = document.createElement("div");
     queen.className = `fas fa-chess-${promFigures[0]} square `;
+    queen.id = `prom-${promFigures[0]}`;
+
+    queen.addEventListener("click", () => {
+      console.log("usuwanie");
+      //clearing previous place
+      board[this.x][this.y] = null;
+      document.getElementById(`${this.x},${this.y}`).innerHTML = "";
+
+      //setting new
+      board[this.x][this.y] = new Queen(this.x, this.y, this.side);
+      console.log(board);
+      document.getElementById(`${this.x},${this.y}`).innerHTML =
+        board[this.x][this.y].display;
+    });
+
     divAccess.appendChild(queen);
 
     let bishop = document.createElement("div");
     bishop.className = `fas fa-chess-${promFigures[1]} square `;
+    bishop.id = `prom-${promFigures[1]}`;
+    bishop.addEventListener("click", () => {
+      board[this.x][this.y] = null;
+      document.getElementById(`${this.x},${this.y}`).innerHTML = "";
+
+      board[this.x][this.y] = new Queen(this.x, this.y, this.side);
+      document.getElementById(`${this.x},${this.y}`).innerHTML =
+        board[this.x][this.y].display;
+    });
     divAccess.appendChild(bishop);
 
     let knight = document.createElement("div");
     knight.className = `fas fa-chess-${promFigures[2]}  square`;
+    knight.id = `prom-${promFigures[2]}`;
+    knight.addEventListener("click", () => {
+      board[this.x][this.y] = null;
+      document.getElementById(`${this.x},${this.y}`).innerHTML = "";
+
+      board[this.x][this.y] = new Queen(this.x, this.y, this.side);
+      document.getElementById(`${this.x},${this.y}`).innerHTML =
+        board[this.x][this.y].display;
+    });
     divAccess.appendChild(knight);
 
     let rook = document.createElement("div");
     rook.className = `fas fa-chess-${promFigures[3]} square `;
+    rook.id = `prom-${promFigures[3]}`;
+    rook.addEventListener("click", () => {
+      board[this.x][this.y] = null;
+      document.getElementById(`${this.x},${this.y}`).innerHTML = "";
+
+      board[this.x][this.y] = new Queen(this.x, this.y, this.side);
+      document.getElementById(`${this.x},${this.y}`).innerHTML =
+        board[this.x][this.y].display;
+    });
     divAccess.appendChild(rook);
   }
+
   enPassant() {}
 }
 export default Pawn;
