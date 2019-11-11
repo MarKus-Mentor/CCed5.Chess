@@ -28,7 +28,7 @@ class Piece {
     document.getElementById(id).innerHTML = this.display;
 
 
-    // add logs of moves to HTML and save in localStorage
+    // add logs of moves to HTML and save in local storage
     let nameSymbol;
     switch (this.name) {
       case "knight":
@@ -57,11 +57,13 @@ class Piece {
         newLog = `${++logNumber}. ${nameSymbol} ${yArr[oldXY.y]}${oldXY.x}-${yArr[newXY.y]}${newXY.x} --- `;
         movesArr.push(newLog);
         localStorage.setItem("moves", JSON.stringify(movesArr));
+        localStorage.setItem("isNextMoveBlack", JSON.stringify(true))
       } else {
         newLog = `${nameSymbol} ${yArr[oldXY.y]}${oldXY.x}-${yArr[newXY.y]}${newXY.x}`;
         movesArr.push(newLog);
         localStorage.setItem("moves", JSON.stringify(movesArr));
-      }
+        localStorage.setItem("isNextMoveBlack", JSON.stringify(false))
+    }
 
     const moves = document.getElementById('moves');
     const breakNode = document.createElement("br");
@@ -74,7 +76,7 @@ class Piece {
     }
 
 
-    // add move to localStorage
+    // add figure position after move to local storage
     const boardStorage = JSON.parse(localStorage.getItem("board"));
     let piecePosition = boardStorage[oldXY.x][oldXY.y];
     piecePosition.x = newXY.x;
