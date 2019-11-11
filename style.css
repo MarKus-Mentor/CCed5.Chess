@@ -11,17 +11,56 @@ body {
   background-size: cover;
 }
 
+.green {
+  background-color: green;
+  color: green
+}
+
 #wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
+#promotionDiv {
+  text-align: center;
+  height: 50vh;
+  margin-right: 2%;
+  width: 15vh;
+  outline: 5px silver solid;
+  background-color: rgb(68, 55, 45);
+  color: white;
+  z-index: 10;
+  opacity: 0.9;
+
+}
+
+
+
+.hidden {
+  display: none !important
+}
+
+#moves {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  margin-left: 2%;
+  width: 30vh;
+  outline: 5px silver solid;
+  background-color: rgb(68, 55, 45);
+  color: white;
+  opacity: 0.9;
 }
 
 #board {
   display: flex;
   flex-wrap: wrap;
-  outline: 5px black solid;
+  outline: 5px silver solid;
   width: 80vh;
   height: 80vh;
 }
@@ -33,6 +72,15 @@ body {
   text-align: center;
   line-height: 10vh;
   font-size: 7.5vh;
+}
+
+.promClass {
+  color: white;
+  padding: 10px
+}
+
+.hover:hover {
+  color: grey
 }
 
 .light {
