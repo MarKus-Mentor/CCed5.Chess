@@ -45,7 +45,7 @@ tr {
   text-align: center;
   height: 50vh;
   margin-right: 2%;
-  width: 15vh;
+  padding: 2%;
   outline: 5px silver solid;
   background-color: rgb(68, 55, 45);
   color: white;
