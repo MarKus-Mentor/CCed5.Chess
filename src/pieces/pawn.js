@@ -1,5 +1,6 @@
 import Piece from "./piece";
 import board from "../board";
+
 class Pawn extends Piece {
   constructor(x, y, side) {
     super(x, y, side);
@@ -64,7 +65,33 @@ class Pawn extends Piece {
 
     return possibleMoves;
   }
-  promote() {}
+  promote() {
+    // let prom;
+    let prom;
+    let promFigures = ["queen", "bishop", "knight", "rook"];
+    const divAccess = document.getElementById("promotionDiv");
+    divAccess.classList.remove("hidden");
+    prom = document.createElement("div");
+    prom.className = "promClass";
+    divAccess.appendChild(prom);
+    prom.innerHTML = "Choose Wisely!";
+
+    let queen = document.createElement("div");
+    queen.className = `fas fa-chess-${promFigures[0]} square `;
+    divAccess.appendChild(queen);
+
+    let bishop = document.createElement("div");
+    bishop.className = `fas fa-chess-${promFigures[1]} square `;
+    divAccess.appendChild(bishop);
+
+    let knight = document.createElement("div");
+    knight.className = `fas fa-chess-${promFigures[2]}  square`;
+    divAccess.appendChild(knight);
+
+    let rook = document.createElement("div");
+    rook.className = `fas fa-chess-${promFigures[3]} square `;
+    divAccess.appendChild(rook);
+  }
   enPassant() {}
 }
 export default Pawn;
