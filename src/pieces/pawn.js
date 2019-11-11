@@ -78,7 +78,7 @@ class Pawn extends Piece {
     prom.innerHTML = "Choose Wisely!";
 
     let queen = document.createElement("div");
-    queen.className = `fas fa-chess-${promFigures[0]} square `;
+    queen.className = `fas fa-chess-${promFigures[0]} square hover `;
     queen.id = `prom-${promFigures[0]}`;
 
     queen.addEventListener("click", () => {
@@ -92,12 +92,13 @@ class Pawn extends Piece {
       console.log(board);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
+      divAccess.classList.add("hidden");
     });
 
     divAccess.appendChild(queen);
 
     let bishop = document.createElement("div");
-    bishop.className = `fas fa-chess-${promFigures[1]} square `;
+    bishop.className = `fas fa-chess-${promFigures[1]} square hover`;
     bishop.id = `prom-${promFigures[1]}`;
     bishop.addEventListener("click", () => {
       board[this.x][this.y] = null;
@@ -106,11 +107,12 @@ class Pawn extends Piece {
       board[this.x][this.y] = new Queen(this.x, this.y, this.side);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
+      divAccess.classList.add("hidden");
     });
     divAccess.appendChild(bishop);
 
     let knight = document.createElement("div");
-    knight.className = `fas fa-chess-${promFigures[2]}  square`;
+    knight.className = `fas fa-chess-${promFigures[2]}  square hover`;
     knight.id = `prom-${promFigures[2]}`;
     knight.addEventListener("click", () => {
       board[this.x][this.y] = null;
@@ -119,11 +121,12 @@ class Pawn extends Piece {
       board[this.x][this.y] = new Queen(this.x, this.y, this.side);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
+      divAccess.classList.add("hidden");
     });
     divAccess.appendChild(knight);
 
     let rook = document.createElement("div");
-    rook.className = `fas fa-chess-${promFigures[3]} square `;
+    rook.className = `fas fa-chess-${promFigures[3]} square hover `;
     rook.id = `prom-${promFigures[3]}`;
     rook.addEventListener("click", () => {
       board[this.x][this.y] = null;
@@ -132,6 +135,7 @@ class Pawn extends Piece {
       board[this.x][this.y] = new Queen(this.x, this.y, this.side);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
+      divAccess.classList.add("hidden");
     });
     divAccess.appendChild(rook);
   }
