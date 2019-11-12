@@ -1,6 +1,9 @@
 import Piece from "./piece";
 import board from "../board";
 import Queen from "./queen";
+import Bishop from "./bishop";
+import Rook from "./rook";
+import Knight from "./knight";
 
 class Pawn extends Piece {
   constructor(x, y, side) {
@@ -105,7 +108,7 @@ class Pawn extends Piece {
       board[this.x][this.y] = null;
       document.getElementById(`${this.x},${this.y}`).innerHTML = "";
 
-      board[this.x][this.y] = new Queen(this.x, this.y, this.side);
+      board[this.x][this.y] = new Bishop(this.x, this.y, this.side);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
       divAccess.classList.add("hidden");
@@ -120,7 +123,7 @@ class Pawn extends Piece {
       board[this.x][this.y] = null;
       document.getElementById(`${this.x},${this.y}`).innerHTML = "";
 
-      board[this.x][this.y] = new Queen(this.x, this.y, this.side);
+      board[this.x][this.y] = new Knight(this.x, this.y, this.side);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
       divAccess.classList.add("hidden");
@@ -135,7 +138,7 @@ class Pawn extends Piece {
       board[this.x][this.y] = null;
       document.getElementById(`${this.x},${this.y}`).innerHTML = "";
 
-      board[this.x][this.y] = new Queen(this.x, this.y, this.side);
+      board[this.x][this.y] = new Rook(this.x, this.y, this.side);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
 
