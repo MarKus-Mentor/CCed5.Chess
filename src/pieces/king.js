@@ -33,10 +33,14 @@ class King extends Piece {
       rightBound && possibleMoves.push(`${this.x + 1},${this.y + 1}`);
     }
 
-    // If place is taken
     return possibleMoves.filter(p => {
         const [x, y] = p.split(',');
-        return !board[x][y];
+
+        if (!board[x][y]) return true;
+        
+        const isOpponent = board[x][y].side !== this.side;
+        const isKing = board[x][y] instanceof King;
+        return isOpponent && !isKing;
       });
   }
 }
