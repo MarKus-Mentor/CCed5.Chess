@@ -52,8 +52,10 @@ tr {
   display: none !important
 }
 #moves {
-  display: flex;
+  display: inline-block;
   justify-content: center;
+  overflow: auto;
+  padding: 1%;
   height: 80vh;
   margin-left: 2%;
   width: 30vh;
@@ -107,7 +109,7 @@ tr {
   font-size: 2.5vh;
   font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0.3vh 0.5vh; 
+  margin: 0.3vh 0.5vh;
 }
 .index.num {
     background-color: transparent;

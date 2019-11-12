@@ -1,6 +1,6 @@
 import board from "./board";
 
-let movesNumber = false;
+let movesNumber = JSON.parse(localStorage.getItem("isNextMoveBlack")) || false;
 let unclick = 88;
 
 const touched = e => {
