@@ -20,24 +20,6 @@ const touched = e => {
   unclick = x + y;
 
   const possibleMoves = board[x][y].findLegalMoves();
-
-  for (let el of possibleMoves) {
-    let childKnot = document.getElementById(el).childNodes;
-    console.log("Elementy z dziecmi: " + childKnot);
-    if (document.getElementById(el).childElementCount != 0) {
-      console.log(board[x][y].side);
-      if (childKnot.item(0).classList[2] == board[x][y].side) {
-        let ourElementsPosition = possibleMoves.indexOf(
-          document.getElementById(el).id
-        );
-        console.log(document.getElementById(el).id);
-        console.log("Przed: " + possibleMoves);
-        possibleMoves.splice(ourElementsPosition, 1);
-        console.log("Po: " + possibleMoves);
-      }
-    }
-  }
-
   for (let el of possibleMoves) {
     document.getElementById(el).className += ` possibleMove`;
     // zmiana koloru indeksow na czarne na polach possibleMoves
