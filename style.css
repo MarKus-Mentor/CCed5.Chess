@@ -52,8 +52,10 @@ tr {
   display: none !important
 }
 #moves {
-  display: flex;
+  display: inline-block;
   justify-content: center;
+  overflow: auto;
+  padding: 1%;
   height: 80vh;
   margin-left: 2%;
   width: 30vh;
