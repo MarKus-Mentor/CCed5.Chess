@@ -11,9 +11,7 @@ for (let i = 0; i < 8; i++) {
 }
 
 // download logs of figure moves from localStorage and generate them in HTML
-
 let movesStorage = JSON.parse(localStorage.getItem("moves"));
-
 if (movesStorage) {
   for (let i = 0; i < movesStorage.length; i++) {
     const moves = document.getElementById('moves');
@@ -29,9 +27,7 @@ if (movesStorage) {
 }
 
 // download the board from localStorage, or generate a new one if it is not already there and save to localStorage
-
 let boardStorage = JSON.parse(localStorage.getItem("board"));
-
 if (boardStorage) {
   for (let x = 0; x < boardStorage.length; x++) {
     for (let y = 0; y < boardStorage.length; y++) {
@@ -119,5 +115,13 @@ if (boardStorage) {
 
   localStorage.setItem("board", JSON.stringify(board));
 }
+
+// function for game reset button
+const resetBtn = document.querySelector("#resetBtn");
+function resetGame() {
+  localStorage.clear();
+  window.location.reload();
+}
+resetBtn.addEventListener('click', resetGame);
 
 export default board;

@@ -63,15 +63,15 @@ class Piece {
     let newLog = "";
 
     if (this.side === "white") {
-        newLog = `${++logNumber}. ${nameSymbol} ${yArr[oldXY.y]}${xArr[oldXY.x]}-${yArr[newXY.y]}${xArr[newXY.x]} --- `;
-        movesArr.push(newLog);
-        localStorage.setItem("moves", JSON.stringify(movesArr));
-        localStorage.setItem("isNextMoveBlack", JSON.stringify(true))
-      } else {
-        newLog = `${nameSymbol} ${yArr[oldXY.y]}${xArr[oldXY.x]}-${yArr[newXY.y]}${xArr[newXY.x]}`;
-        movesArr.push(newLog);
-        localStorage.setItem("moves", JSON.stringify(movesArr));
-        localStorage.setItem("isNextMoveBlack", JSON.stringify(false))
+      newLog = `${++logNumber}. ${nameSymbol} ${yArr[oldXY.y]}${xArr[oldXY.x]}-${yArr[newXY.y]}${xArr[newXY.x]} --- `;
+      movesArr.push(newLog);
+      localStorage.setItem("moves", JSON.stringify(movesArr));
+      localStorage.setItem("isNextMoveBlack", JSON.stringify(true))
+    } else {
+      newLog = `${nameSymbol} ${yArr[oldXY.y]}${xArr[oldXY.x]}-${yArr[newXY.y]}${xArr[newXY.x]}`;
+      movesArr.push(newLog);
+      localStorage.setItem("moves", JSON.stringify(movesArr));
+      localStorage.setItem("isNextMoveBlack", JSON.stringify(false))
     }
 
     const moves = document.getElementById('moves');

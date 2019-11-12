@@ -7,6 +7,7 @@ html {
 body {
   background: url(img/chess.jpg) no-repeat center center fixed;
   background-size: cover;
+  font-family: sans-serif;
 }
 #wrapper {
   display: flex;
@@ -17,12 +18,12 @@ body {
   margin-right: 5%;
 }
 #board {
-    display: flex;
-    flex-wrap: wrap;
-    outline: 4px black solid;
-    width: 80vh;
-    height: 80vh;
-    position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  outline: 4px black solid;
+  width: 80vh;
+  height: 80vh;
+  position: relative;
 }
 table,
 tr,
@@ -51,17 +52,37 @@ tr {
 .hidden {
   display: none !important
 }
+.logWrapper{
+  margin-left: 2%;
+  width: 30vh;
+}
+#resetBtn {
+  background-color: rgb(68, 55, 45);
+  opacity: 0.9;
+  color: white;
+  font-size: large;
+  padding: 3%;
+  margin-top: 2vh;
+  margin-right: 2%;
+  outline: 5px silver solid;
+  border: none;
+  align-items: flex-end;
+  height: 10vh;
+}
+#resetBtn:hover{
+  opacity: 0.7;
+}
 #moves {
   display: inline-block;
   justify-content: center;
   overflow: auto;
-  padding: 1%;
-  height: 80vh;
-  margin-left: 2%;
+  padding-left: 3%;
+  height: 68vh;
   width: 30vh;
   outline: 5px silver solid;
   background-color: rgb(68, 55, 45);
   color: white;
+  line-height: 1.6vw;
   opacity: 0.9;
 }
 .promClass {
@@ -71,23 +92,23 @@ tr {
 .hover:hover {
   color: grey
 }
+
 /* squares start */
 .square {
-    /* border: 1px darkslategrey solid; */
-    width: 10vh;
-    height: 10vh;
-    text-align: center;
-    line-height: 10vh;
-    font-size: 7.5vh;
+  /* border: 1px darkslategrey solid; */
+  width: 10vh;
+  height: 10vh;
+  text-align: center;
+  line-height: 10vh;
+  font-size: 7.5vh;
 }
 .light {
-    background: #c0b0a1;
-    color: rgb(68, 55, 45);
+  background: #c0b0a1;
+  color: rgb(68, 55, 45);
 }
 .dark {
-    background:rgb(68, 55, 45);
-    color: #c0b0a1;
-    opacity: 0, 7;
+  background:rgb(68, 55, 45);
+  color: #c0b0a1;
 }
 .black {
   color: black;
@@ -112,23 +133,19 @@ tr {
   margin: 0.3vh 0.5vh;
 }
 .index.num {
-    background-color: transparent;
+  background-color: transparent;
 }
 .index.letter {
-    background-color: transparent;
+  background-color: transparent;
 }
 .num {
-    text-align: left;
+  text-align: left;
 }
 .letter {
-    bottom: 0;
-    text-align: right;
+  bottom: 0;
+  text-align: right;
 }
 .lightIndex {
-    color: rgb(68, 55, 45);
+  color: rgb(68, 55, 45);
 }
 /* indexes end */
-.green {
-  background-color: green;
-  color: green
-}
