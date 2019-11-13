@@ -24,6 +24,7 @@ class Piece {
     this.y = newY;
     board[this.x][this.y] = this;
     const newXY = {...board[this.x][this.y]};
+
     document.getElementById(id).innerHTML = this.display;
 
     if (this.name === "pawn") {
@@ -58,18 +59,19 @@ class Piece {
         break;
     }
     const yArr = ["a", "b", "c", "d", "e", "f", "g", "h"];
+    const xArr = ["8", "7", "6", "5", "4", "3", "2", "1"];
     let newLog = "";
 
     if (this.side === "white") {
-        newLog = `${++logNumber}. ${nameSymbol} ${yArr[oldXY.y]}${oldXY.x}-${yArr[newXY.y]}${newXY.x} --- `;
-        movesArr.push(newLog);
-        localStorage.setItem("moves", JSON.stringify(movesArr));
-        localStorage.setItem("isNextMoveBlack", JSON.stringify(true))
-      } else {
-        newLog = `${nameSymbol} ${yArr[oldXY.y]}${oldXY.x}-${yArr[newXY.y]}${newXY.x}`;
-        movesArr.push(newLog);
-        localStorage.setItem("moves", JSON.stringify(movesArr));
-        localStorage.setItem("isNextMoveBlack", JSON.stringify(false))
+      newLog = `${++logNumber}. ${nameSymbol} ${yArr[oldXY.y]}${xArr[oldXY.x]}-${yArr[newXY.y]}${xArr[newXY.x]} --- `;
+      movesArr.push(newLog);
+      localStorage.setItem("moves", JSON.stringify(movesArr));
+      localStorage.setItem("isNextMoveBlack", JSON.stringify(true))
+    } else {
+      newLog = `${nameSymbol} ${yArr[oldXY.y]}${xArr[oldXY.x]}-${yArr[newXY.y]}${xArr[newXY.x]}`;
+      movesArr.push(newLog);
+      localStorage.setItem("moves", JSON.stringify(movesArr));
+      localStorage.setItem("isNextMoveBlack", JSON.stringify(false))
     }
 
     const moves = document.getElementById('moves');
@@ -81,7 +83,6 @@ class Piece {
     if (!newLog.includes('---')) {
       moves.appendChild(breakNode)
     }
-
 
     // add figure position after move to local storage
     const boardStorage = JSON.parse(localStorage.getItem("board"));
