@@ -94,6 +94,7 @@ class Pawn extends Piece {
       console.log(board);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
+      localStorage.setItem("board", JSON.stringify(board));
       divAccess.classList.add("hidden");
       // board[this.x][this.y] = null;
       divAccess.innerHTML = "";
@@ -111,6 +112,7 @@ class Pawn extends Piece {
       board[this.x][this.y] = new Bishop(this.x, this.y, this.side);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
+      localStorage.setItem("board", JSON.stringify(board));
       divAccess.classList.add("hidden");
       divAccess.innerHTML = "";
     });
@@ -126,6 +128,7 @@ class Pawn extends Piece {
       board[this.x][this.y] = new Knight(this.x, this.y, this.side);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
+      localStorage.setItem("board", JSON.stringify(board));
       divAccess.classList.add("hidden");
       divAccess.innerHTML = "";
     });
@@ -141,7 +144,7 @@ class Pawn extends Piece {
       board[this.x][this.y] = new Rook(this.x, this.y, this.side);
       document.getElementById(`${this.x},${this.y}`).innerHTML =
         board[this.x][this.y].display;
-
+      localStorage.setItem("board", JSON.stringify(board));
       divAccess.classList.add("hidden");
       divAccess.innerHTML = "";
     });
