@@ -2,6 +2,7 @@ import board from "./board";
 
 let kingWhite;  // wspolrzedne bialego krola
 let kingBlack;  // wspolrzedne czarnego krola
+let possibleMoveToAvoidMat = false;
 
 const findCheckmate = () => {
   const thretensTheBlackKing = []; // wspolrzedne figur zagrazajacych czarnemu krolowi
@@ -42,26 +43,20 @@ const findCheckmate = () => {
       else if(board[x][y] && board[x][y].name !== 'king' && board[x][y].side === 'black' && board[x][y].findLegalMoves().includes(`${kingWhite}`)) {
         thretensTheWhiteKing.push(`${x},${y}`);
         document.getElementById(kingWhite).className += ` check`;
-        console.log(thretensTheWhiteKing);
     }
   }
 }
 
-if (thretensTheWhiteKing.length!=0) mat(thretensTheWhiteKing,'white');
-if (thretensTheBlackKing.length!=0) mat(thretensTheBlackKing,'black');
-
-/*Mat 
-DO ZROBIENIA
-  Zablokować podczas szacha możliwość innego ruchu niż ratunek króla
-  Ograniczyć możliwość ruchu króla gdzie jest pole rażenia figury przeciwnika
-    Upewnić się, że mechanizm działa także, dla konia
-  */
+possibleMoveToAvoidMat=false;
+if (thretensTheWhiteKing.length!=0) {mat(thretensTheWhiteKing,'white'); possibleMoveToAvoidMat=true;}
+if (thretensTheBlackKing.length!=0) {mat(thretensTheBlackKing,'black'); possibleMoveToAvoidMat=true;}
 }
 
 let possibleMovesPlayer = [];
 
 function mat(thretens,chessSide)
 {
+  possibleMovesPlayer = [];
   let KingX; let KingY;
   if(chessSide==='white')
   {
@@ -89,13 +84,11 @@ if(thretensKingX === KingX)
   {
     for(let i=thretensKingY; i<KingY; i++)
       {
-        document.getElementById(thretensKingX+','+i).className += ` checkMovement`;
         possibleMovesPlayer.push(thretensKingX+','+i);
     }
   } else{ 
     for(let i=thretensKingY; i>KingY; i--)
       {
-        document.getElementById(thretensKingX+','+i).className += ` checkMovement`;
         possibleMovesPlayer.push(thretensKingX+','+i);
     }
   }
@@ -107,13 +100,11 @@ if(thretensKingY === KingY)
   {
     for(let i=thretensKingX; i<KingX; i++) 
       {
-        document.getElementById(i+','+thretensKingY).className += ` checkMovement`;
         possibleMovesPlayer.push(i+','+thretensKingY);
     }
   }else{
     for(let i=thretensKingX; i>KingX; i--) 
     {
-      document.getElementById(i+','+thretensKingY).className += ` checkMovement`;
       possibleMovesPlayer.push(i+','+thretensKingY);
     }
   }
@@ -122,7 +113,6 @@ if(thretensKingY === KingY)
 //Movement bias
 if(board[thretensKingX][thretensKingY].name === 'knight')
 {
-  document.getElementById(thretensKingX+','+thretensKingY).className += ` checkMovement`;
   possibleMovesPlayer.push(thretensKingX+','+thretensKingY);
 }else{
 
@@ -130,7 +120,6 @@ if(board[thretensKingX][thretensKingY].name === 'knight')
   {
     for(let i=thretensKingX; i<KingX; i++) 
     {
-      document.getElementById(i+','+bias).className += ` checkMovement`;
       possibleMovesPlayer.push(i+','+bias);
       bias++;
     }
@@ -138,7 +127,6 @@ if(board[thretensKingX][thretensKingY].name === 'knight')
     {
       for(let i=thretensKingX; i<KingX; i++) 
       {
-        document.getElementById(i+','+bias).className += ` checkMovement`;
         possibleMovesPlayer.push(i+','+bias);
         bias--;
       }
@@ -146,7 +134,6 @@ if(board[thretensKingX][thretensKingY].name === 'knight')
       {
         for(let i=thretensKingX; i>KingX; i--) 
         {
-          document.getElementById(i+','+bias).className += ` checkMovement`;
           possibleMovesPlayer.push(i+','+bias);
           bias++;
         }
@@ -154,7 +141,6 @@ if(board[thretensKingX][thretensKingY].name === 'knight')
         {
           for(let i=thretensKingX; i>KingX; i--) 
           {
-            document.getElementById(i+','+bias).className += ` checkMovement`;
             possibleMovesPlayer.push(i+','+bias);
             bias--;
           }
@@ -163,9 +149,7 @@ if(board[thretensKingX][thretensKingY].name === 'knight')
       }
 }
 
-console.log("Mozliwe ruchu dla gracza bialych, aby zaslonic krola: "+possibleMovesPlayer);
-
-//mozliwe ruchy dla naszych wszystkich figur
+//Possible move of all our pieces
 for(let x = 0; x < board.length; x++) {
   for(let y = 0; y < board.length; y++) {
     if(board[x][y] && board[x][y].side === chessSide && board[x][y].name != 'king') 
@@ -184,9 +168,7 @@ for(let i=0;i<idPieces.length;i++)
   movementArea.push(board[idPiecesX][idPiecesY].findLegalMoves());
 }
 
-console.log("Możliwe ruchu naszych bierek: "+movementArea);
-
-//Sprawdzanie czy możemy zasłonić naszą figurę, albo zbić wroga
+//Check if we can cover up our king or knock down enemy
 for(let el1 of possibleMovesPlayer)
 {
   for(let el2 of movementArea)
@@ -196,10 +178,10 @@ for(let el1 of possibleMovesPlayer)
 }
 
 let indexOfElementpossibleMovesKing;
-//Gdy nie możemy uchronić króla
+//When we can`t protect our king
 if(checkMat)
 {
-  //ograniczenie ruchow krola przez figure przeciwnika
+  //Check if king has a field to escape
   for(let el1 of possibleMovesKing)
   {
     for(let el2 of possibleMovesPlayer)
@@ -208,17 +190,34 @@ if(checkMat)
     }
   }
   possibleMovesKing.splice(indexOfElementpossibleMovesKing, 1);
+  //If there is no escape game over
   if(possibleMovesKing.length===0) fanfary();
 } 
 
 possibleMovesKing = [];
-possibleMovesPlayer = [];
 movementArea = [];
 }
 
 function fanfary()
 {
   alert("Wygrałeś!!!!!!");
+  localStorage.clear();
+  window.location.reload();
 }
 
-export default findCheckmate;
+//Blocking player movement, can only save king
+const movementArea = tab => {
+  let possibleMove = [];
+  if(possibleMoveToAvoidMat) {
+  for (let el1 of tab)
+  {
+    for(let el2 of possibleMovesPlayer)
+    {
+      if(el1 === el2) possibleMove.push(el1);
+    }
+  }
+  return possibleMove;
+   } else return tab;
+}
+
+export {findCheckmate, movementArea};
