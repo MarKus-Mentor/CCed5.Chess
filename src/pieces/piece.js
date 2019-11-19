@@ -13,6 +13,12 @@ class Piece {
   move(id) {
     const newX = Number(id[0]);
     const newY = Number(id[2]);
+    let isCapturing = document.getElementById(`${newX},${newY}`).children.length > 0;
+    let isCastling = false;
+
+    if (isCapturing) {
+      isCastling = document.getElementById(`${newX},${newY}`).children[0].classList.contains(this.side);
+    }
 
     //clearing previous place
     const oldXY = {...board[this.x][this.y]};
@@ -24,7 +30,6 @@ class Piece {
     this.y = newY;
     board[this.x][this.y] = this;
     const newXY = {...board[this.x][this.y]};
-
     document.getElementById(id).innerHTML = this.display;
 
     if (this.name === "pawn") {
@@ -61,14 +66,26 @@ class Piece {
     const yArr = ["a", "b", "c", "d", "e", "f", "g", "h"];
     const xArr = ["8", "7", "6", "5", "4", "3", "2", "1"];
     let newLog = "";
+    let movementMark = "";
+
+    // check if movement is capturing or castling
+    if (isCapturing){
+      if (isCastling){
+        movementMark = "="
+      } else {
+        movementMark = "x";
+      }
+    } else {
+      movementMark = "-";
+    }
 
     if (this.side === "white") {
-      newLog = `${++logNumber}. ${nameSymbol} ${yArr[oldXY.y]}${xArr[oldXY.x]}-${yArr[newXY.y]}${xArr[newXY.x]} --- `;
+      newLog = `${++logNumber}. ${nameSymbol} ${yArr[oldXY.y]}${xArr[oldXY.x]}${movementMark}${yArr[newXY.y]}${xArr[newXY.x]} --- `;
       movesArr.push(newLog);
       localStorage.setItem("moves", JSON.stringify(movesArr));
       localStorage.setItem("isNextMoveBlack", JSON.stringify(true))
     } else {
-      newLog = `${nameSymbol} ${yArr[oldXY.y]}${xArr[oldXY.x]}-${yArr[newXY.y]}${xArr[newXY.x]}`;
+      newLog = `${nameSymbol} ${yArr[oldXY.y]}${xArr[oldXY.x]}${movementMark}${yArr[newXY.y]}${xArr[newXY.x]}`;
       movesArr.push(newLog);
       localStorage.setItem("moves", JSON.stringify(movesArr));
       localStorage.setItem("isNextMoveBlack", JSON.stringify(false))
