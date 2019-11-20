@@ -21,6 +21,9 @@ function setTime() {
   localStorage.setItem('timer', JSON.stringify(totalSeconds));
 }
 
+document.getElementById('fireworks').hidden = true;
+document.getElementById('time').hidden = false;
+document.getElementById('wrapper').hidden = false;
 //checkWinner();
 
 //changePlayer(); to wszystko na później

@@ -191,18 +191,20 @@ if(checkMat)
   }
   possibleMovesKing.splice(indexOfElementpossibleMovesKing, 1);
   //If there is no escape game over
-  if(possibleMovesKing.length===0) fanfary();
+  if(possibleMovesKing.length===0) fanfary(chessSide);
 } 
 
 possibleMovesKing = [];
 movementArea = [];
 }
 
-function fanfary()
+function fanfary(side)
 {
-  alert("Wygrałeś!!!!!!");
-  localStorage.clear();
-  window.location.reload();
+  document.getElementById('time').style.display = 'none';
+  document.getElementById('wrapper').style.display = 'none';
+  document.getElementById('fireworks').hidden = false;
+  let winText = document.getElementById('winText');
+  (side==='black') ? winText.innerHTML = "Dzisiaj wygrała<br>Jasna strona mocy" : winText.innerHTML = "Dzisiaj wygrała<br>Ciemna strona mocy";
 }
 
 //Blocking player movement, can only save king

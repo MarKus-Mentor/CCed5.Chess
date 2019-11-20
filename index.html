@@ -26,14 +26,10 @@
 </div>
 <div id="wrapper">
 
-  <div id="promotionDiv" class="hidden">
+  <div id="promotionDiv" class="hidden"></div>
 
-  </div>
+  <div id="board"></div>
 
-
-  <div id="board">
-
-  </div>
   <div class="logWrapper">
     <div id="moves">
       <p>Your moves:</p>
@@ -41,12 +37,25 @@
     <button id="resetBtn">New game</button>
   </div>
 
-
-
-
 </div>
 
-<script src="index.js"></script>
-</body>
+<div id="fireworks" class="pyro">
+  <div id="winText"></div>
+  <div class="before"></div>
+  <div class="after"></div>
+  <button id="newGameButton" onclick="newGame()">New game</button>
+</div>
 
+
+<script src="index.js"></script>
+<script>
+newGame = () => {
+  document.getElementById('time').style.display = 'flex';
+  document.getElementById('wrapper').style.display = 'flex';
+  document.getElementById('fireworks').hidden = true;
+  localStorage.clear();
+  window.location.reload();
+} 
+</script>
+</body>
 </html>
