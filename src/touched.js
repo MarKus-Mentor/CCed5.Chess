@@ -1,5 +1,5 @@
 import board from "./board";
-import findCheckmate from './checkmate';
+import {findCheckmate, movementArea, movementAreaKing} from './checkmate';
 
 let movesNumber = JSON.parse(localStorage.getItem("isNextMoveBlack")) || false;
 let unclick = 88;
@@ -20,7 +20,8 @@ const touched = e => {
   }
   unclick = x + y;
 
-  const possibleMoves = board[x][y].findLegalMoves();
+  let possibleMoves = board[x][y].findLegalMoves();
+  (board[x][y].name != 'king') ? possibleMoves = movementArea(possibleMoves) : possibleMoves = movementAreaKing(possibleMoves);
   for (let el of possibleMoves) {
     document.getElementById(el).className += ` possibleMove`;
     // zmiana koloru indeksow na czarne na polach possibleMoves
@@ -48,6 +49,7 @@ const touched = e => {
       findCheckmate();
     });
   }
+  
 };
 
 function resetBacklight() {
@@ -65,6 +67,7 @@ function resetBacklight() {
         .getElementById(`${x},${y}`)
         .className.replace(`possibleMove`, "");
 
+        
       //TODO: rozwiązać tematykę event listenerów sprytniej, przenosząc każdy do osobnego pliku
       let old_element = document.getElementById(`${x},${y}`);
       let new_element = old_element.cloneNode(true);
