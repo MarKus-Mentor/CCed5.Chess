@@ -220,4 +220,19 @@ const movementArea = tab => {
    } else return tab;
 }
 
-export {findCheckmate, movementArea};
+const movementAreaKing = (tab) =>{
+  let indexOfElementpossibleMove = 0;
+  //Check if king has a field to escape
+  for(let el1 of tab)
+  {
+    for(let el2 of possibleMovesPlayer)
+    {
+      if(el1 === el2) indexOfElementpossibleMove = tab.indexOf(el1);
+    }
+  }
+  //Possibles moves for king
+  tab.splice(indexOfElementpossibleMove, 1);
+  return tab;
+}
+
+export {findCheckmate, movementArea, movementAreaKing};
