@@ -30,9 +30,6 @@ class Pawn extends Piece {
           this.x - 1 >= 0 && possibleMoves.push(`${this.x - 1},${this.y + 1}`);
         }
       }
-      if (this.x === 0) {
-        alert('wybierz bialego pionka');
-      }
     }
 
     if (this.side === 'black') {
@@ -49,9 +46,6 @@ class Pawn extends Piece {
         if (board[this.x + 1][this.y + 1] && board[this.x + 1][this.y + 1].side === 'white') {
           this.x + 1 <= 7 && possibleMoves.push(`${this.x + 1},${this.y + 1}`);
         }
-      }
-      if (this.x === 7) {
-        alert('wybierz czarnego pionka');
       }
     }
 
