@@ -223,18 +223,26 @@ const movementArea = tab => {
 }
 
 const movementAreaKing = (tab) =>{
-  let indexOfElementpossibleMove = 0;
-  //Check if king has a field to escape
-  for(let el1 of tab)
+  let indexOfElementpossibleMove;
+  console.log("enter "+tab);
+  console.log("123 "+possibleMovesPlayer);
+  if(possibleMovesPlayer.length > 1)
   {
-    for(let el2 of possibleMovesPlayer)
+    //Check if king has a field to escape
+    for(let el1 of tab)
     {
-      if(el1 === el2) indexOfElementpossibleMove = tab.indexOf(el1);
+      for(let el2 of possibleMovesPlayer)
+      {
+        if(el1 === el2) indexOfElementpossibleMove = tab.indexOf(el1);
+      }
     }
-  }
-  //Possibles moves for king
-  tab.splice(indexOfElementpossibleMove, 1);
-  return tab;
-}
+    console.log("middle"+tab);
+    //Possibles moves for king
+    tab.splice(indexOfElementpossibleMove, 1);
+    console.log("Out "+tab);
+    return tab;
+  }else return tab;
 
+
+}
 export {findCheckmate, movementArea, movementAreaKing};

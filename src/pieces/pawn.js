@@ -4,6 +4,7 @@ import Queen from './queen';
 import Bishop from './bishop';
 import Rook from './rook';
 import Knight from './knight';
+import {findCheckmate} from '../checkmate';
 
 class Pawn extends Piece {
   constructor(x, y, side) {
@@ -79,6 +80,7 @@ class Pawn extends Piece {
       divAccess.classList.add('hidden');
       // board[this.x][this.y] = null;
       divAccess.innerHTML = '';
+      findCheckmate();
     });
 
     divAccess.appendChild(queen);
@@ -95,6 +97,7 @@ class Pawn extends Piece {
       localStorage.setItem('board', JSON.stringify(board));
       divAccess.classList.add('hidden');
       divAccess.innerHTML = '';
+      findCheckmate();
     });
     divAccess.appendChild(bishop);
 
@@ -110,6 +113,7 @@ class Pawn extends Piece {
       localStorage.setItem('board', JSON.stringify(board));
       divAccess.classList.add('hidden');
       divAccess.innerHTML = '';
+      findCheckmate();
     });
     divAccess.appendChild(knight);
 
@@ -125,6 +129,7 @@ class Pawn extends Piece {
       localStorage.setItem('board', JSON.stringify(board));
       divAccess.classList.add('hidden');
       divAccess.innerHTML = '';
+      findCheckmate();
     });
 
     divAccess.appendChild(rook);
