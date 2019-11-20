@@ -27,7 +27,7 @@ body {
 #board {
   display: flex;
   flex-wrap: wrap;
-  outline: 4px black solid;
+  outline: 4px rgb(68, 55, 45) solid;
   width: 80vh;
   height: 80vh;
   position: relative;
@@ -52,7 +52,7 @@ tr {
   width: 30vh;
   margin-right: 2%;
   padding: 2%;
-  outline: 5px silver solid;
+  outline: 4px silver solid;
   background-color: rgb(68, 55, 45);
   color: white;
   z-index: 10;
@@ -73,7 +73,7 @@ tr {
   padding: 3%;
   margin-top: 2vh;
   margin-right: 2%;
-  outline: 5px silver solid;
+  outline: 4px silver solid;
   border: none;
   align-items: flex-end;
   height: 10vh;
@@ -89,7 +89,7 @@ tr {
   padding-left: 3%;
   height: 68vh;
   width: 30vh;
-  outline: 5px silver solid;
+  outline: 4px silver solid;
   background-color: rgb(68, 55, 45);
   color: white;
   line-height: 1.6vw;
@@ -159,3 +159,6 @@ tr {
   color: rgb(68, 55, 45);
 }
 /* indexes end */
+.check {
+  background: crimson;
+}
