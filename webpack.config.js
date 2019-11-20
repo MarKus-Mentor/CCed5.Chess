@@ -5,7 +5,8 @@ module.exports = {
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname),
-        filename: 'index.js'
+        filename: 'index.js',
+        publicPath: "/CCed5.Chess/",
     },
     resolve: {
         extensions: ['.js']
