@@ -1,5 +1,5 @@
 import board from "./board";
-import {findCheckmate, movementArea, movementAreaKing} from './checkmate';
+import {findCheckmate, movementAreaPiece, movementAreaKing} from './checkmate';
 
 let movesNumber = JSON.parse(localStorage.getItem("isNextMoveBlack")) || false;
 let unclick = 88;
@@ -21,7 +21,7 @@ const touched = e => {
   unclick = x + y;
 
   let possibleMoves = board[x][y].findLegalMoves();
-  (board[x][y].name != 'king') ? possibleMoves = movementArea(possibleMoves) : possibleMoves = movementAreaKing(possibleMoves);
+  (board[x][y].name != 'king') ? possibleMoves = movementAreaPiece(possibleMoves) : possibleMoves = movementAreaKing(possibleMoves,board[x][y].side);
   for (let el of possibleMoves) {
     document.getElementById(el).className += ` possibleMove`;
     // zmiana koloru indeksow na czarne na polach possibleMoves
