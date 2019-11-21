@@ -1,5 +1,7 @@
 import board from "./board";
 
+//There`s a bug with move king and pawn. We blocking field front of pawn
+
 let kingWhite;  // wspolrzedne bialego krola
 let kingBlack;  // wspolrzedne czarnego krola
 let possibleMoveToAvoidMat = false;
@@ -53,6 +55,7 @@ if (thretensTheBlackKing.length!=0) {mat(thretensTheBlackKing,'black'); possible
 }
 
 let possibleMovesPlayer = [];
+let movementArea = [];
 
 function mat(thretens,chessSide)
 {
@@ -67,8 +70,6 @@ function mat(thretens,chessSide)
 
   let possibleMovesKing = board[KingX][KingY].findLegalMoves();
 
-let idPieces = [];
-let movementArea = [];
 let checkMat = true;
 
 for(let el of thretens)
@@ -149,24 +150,8 @@ if(board[thretensKingX][thretensKingY].name === 'knight')
       }
 }
 
-//Possible move of all our pieces
-for(let x = 0; x < board.length; x++) {
-  for(let y = 0; y < board.length; y++) {
-    if(board[x][y] && board[x][y].side === chessSide && board[x][y].name != 'king') 
-    {
-      idPieces.push(`${x},${y}`);
-    }
-  }
-}
-
-let idPiecesX; let idPiecesY;
-
-for(let i=0;i<idPieces.length;i++)
-{
-  idPiecesX = idPieces[i].charAt(0);
-  idPiecesY = idPieces[i].charAt(2);
-  movementArea.push(board[idPiecesX][idPiecesY].findLegalMoves());
-}
+//Possible move of all pieces
+possibleMovesAll(chessSide);
 
 //Check if we can cover up our king or knock down enemy
 for(let el1 of possibleMovesPlayer)
@@ -208,7 +193,7 @@ function fanfary(side)
 }
 
 //Blocking player movement, can only save king
-const movementArea = tab => {
+ const movementAreaPiece = tab => {
   let possibleMove = [];
   if(possibleMoveToAvoidMat) {
   for (let el1 of tab)
@@ -222,10 +207,13 @@ const movementArea = tab => {
    } else return tab;
 }
 
-const movementAreaKing = (tab) =>{
+//Possible moves for king
+const movementAreaKing = (tab, kingColor) =>{
   let indexOfElementpossibleMove;
-  console.log("enter "+tab);
-  console.log("123 "+possibleMovesPlayer);
+  movementArea = [];
+  //if there is no threat reset possiblemMovesPlayer
+  if(possibleMoveToAvoidMat===false) possibleMovesPlayer = [];
+
   if(possibleMovesPlayer.length > 1)
   {
     //Check if king has a field to escape
@@ -236,13 +224,44 @@ const movementAreaKing = (tab) =>{
         if(el1 === el2) indexOfElementpossibleMove = tab.indexOf(el1);
       }
     }
-    console.log("middle"+tab);
     //Possibles moves for king
     tab.splice(indexOfElementpossibleMove, 1);
-    console.log("Out "+tab);
     return tab;
-  }else return tab;
+  }else {
+    //Check movementAre enemy pieces
+    (kingColor==='white') ? possibleMovesAll('black') : possibleMovesAll('white');
 
-
+    for(let el1=0; el1<tab.length;el1++)
+    {
+      for(let el2 of movementArea)
+      { //Delete opportunities to move on field enemy
+        if(el2.includes(tab[el1])) {indexOfElementpossibleMove = tab.indexOf(tab[el1]); tab.splice(indexOfElementpossibleMove, 1); el1--;}
+      }
+    }
+      return tab;
+    }
 }
-export {findCheckmate, movementArea, movementAreaKing};
+
+ //Possible move of all pieces
+const possibleMovesAll = chessSide =>{
+  let idPieces = [];
+  for(let x = 0; x < board.length; x++) {
+    for(let y = 0; y < board.length; y++) {
+      if(board[x][y] && board[x][y].side === chessSide && board[x][y].name != 'king') 
+      {
+        idPieces.push(`${x},${y}`);
+      }
+    }
+  }
+
+  let idPiecesX; let idPiecesY;
+
+  for(let i=0;i<idPieces.length;i++)
+  {
+    idPiecesX = idPieces[i].charAt(0);
+    idPiecesY = idPieces[i].charAt(2);
+    movementArea.push(board[idPiecesX][idPiecesY].findLegalMoves());
+  }
+}
+
+export {findCheckmate, movementAreaPiece, movementAreaKing};
